@@ -1,12 +1,12 @@
-import Home from "./pages/Home/Home"
 import MainLayout from "./layout/MainLayout";
+import { Router } from "./router/Router";
 
 function App() {
   return (
     <div className="App">
         <MainLayout>
-        <Home />
-        </MainLayout>     
+        <Router />
+        </MainLayout>
     </div>
   );
 }
