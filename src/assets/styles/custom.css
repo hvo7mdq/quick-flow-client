@@ -1,0 +1,7 @@
+.ver-nav{
+    width: 13%;
+    min-height: calc(100vh - 55px);
+}
+.content{
+    width: 87%;
+}

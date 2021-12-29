@@ -1,17 +1,27 @@
 import {Switch,Route} from 'react-router-dom'
 import Home from "../pages/Home/Home"
+import Login from "../pages/Auth/Login/Login"
+import Signup from "../pages/Auth/Signup/Signup"
+import Category from "../pages/Category/Category"
+import NotFound from '../pages/404/404'
 
 export const Router = () => {
     return(
         <Switch>
-            <Route path='/' >
+            <Route exact path='/' >
             <Home />
             </Route>
-            <Route path='/login' >
+            <Route exact path='/login' >
+            <Login />
             </Route>
-            <Route path='/signup' >
+            <Route exact path='/signup' >
+            <Signup />
             </Route>
-            <Route path='/category' >
+            <Route exact path='/category' >
+            <Category />
+            </Route>
+            <Route path='*' >
+            <NotFound />
             </Route>
         </Switch> 
     )

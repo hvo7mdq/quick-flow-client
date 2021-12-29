@@ -7,7 +7,7 @@ export default function MainLayout({children}) {
     return (
         <div>
             <Navbar />
-            {children}
+                {children}
             <Footer />
         </div>
     )
