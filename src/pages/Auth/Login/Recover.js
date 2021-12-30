@@ -1,18 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { Formik,Form,Field } from 'formik'
 import axios from 'axios'
 import recoverSchema from '../../../schema/RecoverSchema'
+import HelmetTitle from '../../../components/Helmet/HelmetTitle'
 
 export default function Recover() {
-    useEffect(()=>{
-        document.title = "Forgot Password"
-    },[])
-
     const handleSubmit = async (values) => {
         await axios.post(`${process.env.REACT_APP_API_URL_1}accounts/recover`,values)
     }
     return (
+        <>
+        <HelmetTitle title="Forgot Password" />
         <Formik
         initialValues={{
             email: '',
@@ -45,5 +44,6 @@ export default function Recover() {
             </Form>
             )}
         </Formik>
+        </>
     )
 }

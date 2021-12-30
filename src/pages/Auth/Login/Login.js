@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import loginSchema from '../../../schema/LoginSchema'
 import { Formik,Form,Field } from 'formik'
 import axios from 'axios'
+import HelmetTitle from '../../../components/Helmet/HelmetTitle'
 
 export default function Login() {
     const [loginError,setLoginError] = useState(null)
-    useEffect(()=>{
-        document.title = "Login"
-    },[])
 
     const handleSubmit =async (values) => {
         await axios.post(`${process.env.REACT_APP_API_URL_1}login/`,values).then(res=>{
@@ -20,6 +18,8 @@ export default function Login() {
     }
 
     return (
+        <>
+        <HelmetTitle title="Log In"/>
         <Formik
         initialValues={{
             email: '',
@@ -61,5 +61,6 @@ export default function Login() {
         </Form>
         )}
     </Formik>
+    </>
     )
 }

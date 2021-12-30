@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Formik,Form,Field } from 'formik'
 import signupSchema from '../../../schema/SignupSchema'
 import axios from 'axios'
+import HelmetTitle from '../../../components/Helmet/HelmetTitle'
 
 export default function Signup() {
     const [signupSuccess,setSignupSuccess] = useState(null)
     const [signupError,setSignupError] = useState(null)
-    useEffect(()=>{
-        document.title = "Sign Up"
-    },[])
 
     const handleSubmit =async (values) => {
         console.log({...values,gender:'male'})
@@ -22,6 +20,8 @@ export default function Signup() {
     }
 
     return (
+        <>
+        <HelmetTitle title="Sign Up" />
         <Formik
         initialValues={{
             first_name:'',
@@ -81,5 +81,6 @@ export default function Signup() {
             </Form>
             )}
         </Formik>
+        </>
     )
 }
