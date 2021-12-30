@@ -10,7 +10,7 @@ export default function Recover() {
     },[])
 
     const handleSubmit = async (values) => {
-        await axios.post(`${process.env.REACT_APP_API_URL_1}api/accounts/recover`,values)
+        await axios.post(`${process.env.REACT_APP_API_URL_1}accounts/recover`,values)
     }
     return (
         <Formik
@@ -31,9 +31,9 @@ export default function Recover() {
                         id="email"
                         name="email"
                         type="email"
-                        className="form-control"
+                        className={`form-control ${errors.email && touched.email && 'border-red'}`}
                     />
-                    <div className='text-danger'>
+                    <div className='text-danger error-txt'>
                         {errors.email && touched.email && errors.email}
                     </div>
                 </div>

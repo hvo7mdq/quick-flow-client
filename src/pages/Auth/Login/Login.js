@@ -11,12 +11,11 @@ export default function Login() {
     },[])
 
     const handleSubmit =async (values) => {
-        await axios.post(`${process.env.REACT_APP_API_URL_1}api/login/`,values).then(res=>{
+        await axios.post(`${process.env.REACT_APP_API_URL_1}login/`,values).then(res=>{
             console.log("match",res)
             setLoginError(null)
         },err=>{
             setLoginError("Email or Password Incorrect")
-            // console.log("error",err.request.responseText)
         })
     }
 
@@ -30,26 +29,26 @@ export default function Login() {
         onSubmit={handleSubmit}
         >
         {({ errors, touched, isValidating }) => (
-        <Form className='shadow-lg login-form mx-auto mt-5 pt-3 px-3 pb-1 border needs-validation'>
+        <Form className='shadow-lg login-form mx-auto mt-5 pt-3 px-3 pb-1 border'>
             <p className='text-center fw-bold fs-5'>Welcome back!</p>
             <p className='text-center'>Sign in to ask or answer questions and unlock all features.</p>
-            <div className="mb-3 needs-validation">
+            <div className="mb-3">
                 <label htmlFor="email" className="form-label">Email address</label>
                 <Field
                     id="email"
                     name="email"
                     type="email"
-                    className="form-control"
+                    className={`form-control ${errors.email && touched.email && 'border-red'}`}
                 />
                 <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-                <div className='text-danger'>
+                <div className='text-danger error-txt'>
                     {errors.email && touched.email && errors.email}
                 </div>
             </div>
-            <div className="mb-3 needs-validation">
+            <div className="mb-3">
                 <label htmlFor="password" className="form-label">Password</label>
-                <Field type="password" id="password" name="password" className="form-control"/>
-                <div className='text-danger'>
+                <Field type="password" id="password" name="password" className={`form-control ${errors.password && touched.password && 'border-red'}`}/>
+                <div className='text-danger error-txt'>
                     {errors.password && touched.password && errors.password}
                 </div>
             </div>
