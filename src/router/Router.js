@@ -9,24 +9,12 @@ import Recover from '../pages/Auth/Login/Recover'
 export const Router = () => {
     return(
         <Switch>
-            <Route exact path='/' >
-                <Home />
-            </Route>
-            <Route exact path='/login' >
-                <Login />
-            </Route>
-            <Route exact path='/signup' >
-                <Signup />
-            </Route>
-            <Route exact path='/category' >
-                <Category />
-            </Route>
-            <Route exact path='/login/recover' >
-                <Recover />
-            </Route>
-            <Route path='*' >
-                <NotFound />
-            </Route>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/signup' component={Signup} />
+            <Route exact path='/category' component={Category} />
+            <Route exact path='/login/recover' component={Recover} />\
+            <Route path='*' component={NotFound} />
         </Switch> 
     )
     
