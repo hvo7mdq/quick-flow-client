@@ -5,6 +5,7 @@ import { Formik,Form,Field } from 'formik'
 import axios from 'axios'
 import HelmetTitle from '../../../components/Helmet/HelmetTitle'
 import InputField from '../../../components/Input/InputField'
+import { loginInitialValues } from '../../../constants/Form/LoginInitialValues'
 
 export default function Login() {
     const [loginError,setLoginError] = useState(null)
@@ -22,14 +23,10 @@ export default function Login() {
         <>
         <HelmetTitle title="Log In"/>
         <Formik
-        initialValues={{
-            email: '',
-            password: ''
-        }}
+        initialValues={loginInitialValues}
         validationSchema={loginSchema}
         onSubmit={handleSubmit}
         >
-        {({ errors, touched, isValidating }) => (
         <Form className='shadow-lg login-form mx-auto mt-5 pt-3 px-3 pb-1 border'>
             <p className='text-center fw-bold fs-5'>Welcome back!</p>
             <p className='text-center'>Sign in to ask or answer questions and unlock all features.</p>
@@ -44,7 +41,6 @@ export default function Login() {
             </div>
             <p className='border-top mt-3 text-center pt-2'>New to QuickFlow? <Link to='/signup'>Create an account.</Link></p>            
         </Form>
-        )}
     </Formik>
     </>
     )

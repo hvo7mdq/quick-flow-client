@@ -7,6 +7,7 @@ import HelmetTitle from '../../../components/Helmet/HelmetTitle'
 import InputField from '../../../components/Input/InputField'
 import InputConfirmPass from '../../../components/Input/InputConfirmPass'
 import InputName from '../../../components/Input/InputName'
+import { signupInitialValues } from '../../../constants/Form/SignUpInitialValues'
 
 export default function Signup() {
     const [signupSuccess,setSignupSuccess] = useState(null)
@@ -26,17 +27,10 @@ export default function Signup() {
         <>
         <HelmetTitle title="Sign Up" />
         <Formik
-        initialValues={{
-            first_name:'',
-            last_name:'',
-            email: '',
-            password: '',
-            password2:''
-        }}
+        initialValues={signupInitialValues}
         validationSchema={signupSchema}
         onSubmit={handleSubmit}
         >
-        {({errors,touched,isValidating})=>(
             <Form className='shadow-lg signup-form mx-auto mt-5 p-3 pb-1 border mb-4'>
             <p className='text-center fw-bold fs-4'>Sign Up To QuickFlow</p>
             <p className='text-center w-75 mx-auto'>Create your account to ask or answer questions and unlock all features.</p>
@@ -56,7 +50,6 @@ export default function Signup() {
             <p className='mt-3 text-center fw-bold text-danger'>{signupError && signupError}</p>
             <p className='border-top mt-3 text-center pt-2'>Already have an account? <Link to='/login'>Log In.</Link></p>
             </Form>
-            )}
         </Formik>
         </>
     )
