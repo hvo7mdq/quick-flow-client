@@ -1,25 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import loginSchema from '../../../schema/LoginSchema'
+import { Formik,Form,Field } from 'formik'
 
 export default function Login() {
+    useEffect(()=>{
+        document.title = "Login"
+    },[])
+
     return (
-        <form className='login-form mx-auto mt-5 p-3 pb-1 border'>
-        <p className='text-center'>Welcome back!</p>
-        <p className='text-center'>Sign in to ask or answer questions and unlock all features.</p>
-        <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">Email address</label>
-            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required/>
-            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-            <div class="invalid-feedback">
-        Please choose a username.
-      </div>
-        </div>
-        <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">Password</label>
-            <input type="password" className="form-control" id="exampleInputPassword1" required/>
-        </div>
-        <button type="submit" className="btn btn-primary w-100">Log In</button>
-        <p className='border-top mt-3 text-center pt-2'>New to QuickFlow? <Link to='/signup'>Create an account.</Link></p>
-        </form>
+        <Formik
+        initialValues={{
+            email: '',
+            password: ''
+        }}
+        validationSchema={loginSchema}
+        onSubmit={
+            async (values) => {
+                console.log(values)
+            }}
+        >
+        {({ errors, touched, isValidating }) => (
+        <Form className='shadow-lg login-form mx-auto mt-5 pt-3 px-3 pb-1 border needs-validation'>
+        {console.log(errors)}
+            <p className='text-center fw-bold fs-5'>Welcome back!</p>
+            <p className='text-center'>Sign in to ask or answer questions and unlock all features.</p>
+            <div className="mb-3 needs-validation">
+                <label htmlFor="email" className="form-label">Email address</label>
+                <Field
+                    id="email"
+                    name="email"
+                    type="email"
+                    className="form-control"
+                />
+                <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                <div className='text-danger'>
+                    {errors.email && touched.email && errors.email}
+                </div>
+            </div>
+            <div className="mb-3 needs-validation">
+                <label htmlFor="password" className="form-label">Password</label>
+                <Field type="password" id="password" name="password" className="form-control"/>
+                <div className='text-danger'>
+                    {errors.password && touched.password && errors.password}
+                </div>
+            </div>
+            <button type="submit" className="btn btn-primary w-100">Log In</button>
+            <p className='border-top mt-3 text-center pt-2'>New to QuickFlow? <Link to='/signup'>Create an account.</Link></p>            
+        </Form>
+        )}
+    </Formik>
     )
 }
