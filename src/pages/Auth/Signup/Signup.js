@@ -76,6 +76,7 @@ export default function Signup() {
             </div>
             <button type="submit" className="btn btn-primary w-100">Register</button>
             <p className='mt-3 text-center fw-bold text-success'>{signupSuccess && signupSuccess}</p>
+            <p className='mt-3 text-center fw-bold text-danger'>{signupError && signupError}</p>
             <p className='border-top mt-3 text-center pt-2'>Already have an account? <Link to='/login'>Log In.</Link></p>
             </Form>
             )}
