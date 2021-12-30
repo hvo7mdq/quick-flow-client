@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import loginSchema from '../../../schema/LoginSchema'
-import { Formik,Form,Field } from 'formik'
-import axios from 'axios'
+import { Formik,Form } from 'formik'
 import HelmetTitle from '../../../components/Helmet/HelmetTitle'
 import InputField from '../../../components/Input/InputField'
 import { loginInitialValues } from '../../../constants/Form/LoginInitialValues'
+import axiosInstance from '../../../axios'
 
 export default function Login() {
     const [loginError,setLoginError] = useState(null)
 
     const handleSubmit =async (values) => {
-        await axios.post(`${process.env.REACT_APP_API_URL_1}login/`,values).then(res=>{
+        await axiosInstance.post('login/',values).then(res=>{
             setLoginError(null)
         },err=>{
             setLoginError("Email or Password Incorrect")

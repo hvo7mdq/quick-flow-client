@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Formik,Form,Field } from 'formik'
-import axios from 'axios'
+import { Formik,Form } from 'formik'
 import recoverSchema from '../../../schema/RecoverSchema'
 import HelmetTitle from '../../../components/Helmet/HelmetTitle'
 import InputField from '../../../components/Input/InputField'
 import { recoverInitialValues } from '../../../constants/Form/RecoverInitialValues'
+import axiosInstance from '../../../axios'
 
 export default function Recover() {
     const handleSubmit = async (values) => {
-        await axios.post(`${process.env.REACT_APP_API_URL_1}accounts/recover`,values)
+        await axiosInstance.post('accounts/recover',values)
     }
     return (
         <>

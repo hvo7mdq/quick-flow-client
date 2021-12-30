@@ -1,20 +1,20 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Formik,Form,Field } from 'formik'
+import { Formik,Form } from 'formik'
 import signupSchema from '../../../schema/SignupSchema'
-import axios from 'axios'
 import HelmetTitle from '../../../components/Helmet/HelmetTitle'
 import InputField from '../../../components/Input/InputField'
 import InputConfirmPass from '../../../components/Input/InputConfirmPass'
 import InputName from '../../../components/Input/InputName'
 import { signupInitialValues } from '../../../constants/Form/SignUpInitialValues'
+import axiosInstance from '../../../axios'
 
 export default function Signup() {
     const [signupSuccess,setSignupSuccess] = useState(null)
     const [signupError,setSignupError] = useState(null)
 
     const handleSubmit =async (values) => {
-        await axios.post(`${process.env.REACT_APP_API_URL_1}accounts/`,{...values}).then(res=>{
+        await axiosInstance.post('accounts/',{...values}).then(res=>{
             setSignupSuccess('Confirmation has been sent to your email.')
         },err=>{
             setSignupError("Failed to register try again.")
