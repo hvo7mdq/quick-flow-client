@@ -1,9 +1,13 @@
 import React from 'react'
 import { useField } from 'formik'
+import classNames from 'classnames'
 
 export default function InputName({label,...props}) {
     const [field,meta] = useField(props)
-    const inputClass = `form-control w-100 ${meta.error && meta.touched && 'border-red'}`
+    const inputClass = classNames({
+        'form-control' : true,
+        'border-red' : meta.error && meta.touched
+    })
     return (
         <>
             <label htmlFor={props.name} className="form-label">{label}</label>

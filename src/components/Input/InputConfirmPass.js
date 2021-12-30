@@ -1,9 +1,13 @@
 import React from 'react'
 import { useField } from 'formik'
+import classNames from 'classnames'
 
 export default function InputConfirmPass({children,label,...props}) {
     const [field,meta] = useField(props)
-    const inputClass = `form-control ${meta.error && meta.touched && 'border-red'}`
+    const inputClass = classNames({
+        'form-control' : true,
+        'border-red' : meta.error && meta.touched
+    })
     return (
         <div className="mb-3">
             <label htmlFor={props.name} className="form-label">{label}</label>
