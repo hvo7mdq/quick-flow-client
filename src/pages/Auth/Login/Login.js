@@ -12,7 +12,6 @@ export default function Login() {
 
     const handleSubmit =async (values) => {
         await axios.post(`${process.env.REACT_APP_API_URL_1}login/`,values).then(res=>{
-            console.log("match",res)
             setLoginError(null)
         },err=>{
             setLoginError("Email or Password Incorrect")

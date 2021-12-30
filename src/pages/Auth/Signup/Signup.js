@@ -14,9 +14,7 @@ export default function Signup() {
     const [signupError,setSignupError] = useState(null)
 
     const handleSubmit =async (values) => {
-        console.log({...values,gender:'male'})
-        await axios.post(`${process.env.REACT_APP_API_URL_1}accounts/`,{...values,gender:'male'}).then(res=>{
-            console.log(res.data.msg)
+        await axios.post(`${process.env.REACT_APP_API_URL_1}accounts/`,{...values}).then(res=>{
             setSignupSuccess('Confirmation has been sent to your email.')
         },err=>{
             setSignupError("Failed to register try again.")
