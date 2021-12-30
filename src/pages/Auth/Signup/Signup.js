@@ -2,44 +2,47 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Formik,Form,Field } from 'formik'
 import signupSchema from '../../../schema/SignupSchema'
+import axios from 'axios'
 
 export default function Signup() {
     useEffect(()=>{
         document.title = "Sign Up"
     },[])
+
+    const handleSubmit =async (values) => {
+        console.log({...values,gender:'male'})
+        await axios.post(`${process.env.REACT_APP_API_URL_1}api/accounts/`,{...values,gender:'male'})
+    }
+
     return (
         <Formik
         initialValues={{
-            fname:'',
-            lname:'',
+            first_name:'',
+            last_name:'',
             email: '',
             password: '',
             password2:''
         }}
         validationSchema={signupSchema}
-        onSubmit={
-            async (values) => {
-                console.log(values)
-            }}
+        onSubmit={handleSubmit}
         >
         {({errors,touched,isValidating})=>(
-            <Form className='shadow-lg signup-form mx-auto mt-5 p-3 pb-1 border mb-4'>            
-            {console.log(errors)}
+            <Form className='shadow-lg signup-form mx-auto mt-5 p-3 pb-1 border mb-4'>
             <p className='text-center fw-bold fs-4'>Sign Up To QuickFlow</p>
             <p className='text-center w-75 mx-auto'>Create your account to ask or answer questions and unlock all features.</p>
             <div className="mb-3 d-flex justify-content-between">
                 <div className='w-50 pe-1'>
-                    <label htmlFor="fname" className="form-label">First Name</label>
-                    <Field type="text" name="fname" className="form-control w-100" id="fname" />
+                    <label htmlFor="first_name" className="form-label">First Name</label>
+                    <Field type="text" name="first_name" className="form-control w-100" id="first_name" />
                     <div className='text-danger'>
-                        {errors.fname && touched.fname && errors.fname}
+                        {errors.first_name && touched.first_name && errors.first_name}
                     </div>
                 </div>
                 <div className='w-50 ps-1'>
-                    <label htmlFor="lname" className="form-label">Last Name</label>
-                    <Field type="text" name="lname" className="form-control w-100" id="lname" />
+                    <label htmlFor="last_name" className="form-label">Last Name</label>
+                    <Field type="text" name="last_name" className="form-control w-100" id="last_name" />
                     <div className='text-danger'>
-                        {errors.lname && touched.lname && errors.lname}
+                        {errors.last_name && touched.last_name && errors.last_name}
                     </div>
                 </div>
             </div>

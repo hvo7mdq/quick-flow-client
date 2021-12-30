@@ -8,6 +8,12 @@
 .login-form{
     width: 32%;
 }
+.login-incorrect{
+    height: 30px;
+}
 .signup-form{
     width: 42%;
+}
+.recover-form{
+    width: 40%;
 }
