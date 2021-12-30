@@ -9,7 +9,7 @@ export default function Recover() {
         document.title = "Forgot Password"
     },[])
 
-    const handleSubmit = (values) => {
+    const handleSubmit = async (values) => {
         await axios.post(`${process.env.REACT_APP_API_URL_1}api/accounts/recover`,values)
     }
     return (
