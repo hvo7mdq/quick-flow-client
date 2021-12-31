@@ -1,13 +1,12 @@
 import React from 'react'
 import { useField } from 'formik'
-import classNames from 'classnames'
+import classNames from '../../helper/ClassMerger'
 
 export default function InputField({children,label,...props}) {
     const [field,meta] = useField(props)
-    const inputClass = classNames({
-        'form-control' : true,
-        'border-red' : meta.error && meta.touched
-    })
+    const inputClass = classNames(
+        'form-control', meta.error && meta.touched && 'border-red'
+    )
     return (
         <div className="mb-3">
             <label htmlFor={props.name} className="form-label">{label}</label>
