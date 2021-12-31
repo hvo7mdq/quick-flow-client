@@ -16,7 +16,7 @@ export default function Navbar() {
                 </div>
                 <div>
                     <Link to="/login" className='btn btn-primary me-2'>Log In</Link>
-                    <Link to="/signup" className='btn btn-primary'>Sign Up</Link>
+                    <Link to="/signup" className='btn btn-light border'>Sign Up</Link>
                 </div>
                 
             </div>

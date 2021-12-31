@@ -24,3 +24,10 @@
 .border-red{
     border: 1px solid red;
 }
+.active{
+    border-right: 6px solid #0275d8 ;
+    background-color: #94ccf7;
+}
+.btn-light:hover{
+    background-color: #dcdee0;
+}
