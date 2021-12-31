@@ -5,3 +5,22 @@
 .content{
     width: 87%;
 }
+.login-form{
+    width: 32%;
+}
+.login-incorrect{
+    height: 30px;
+}
+.signup-form{
+    width: 42%;
+}
+.recover-form{
+    width: 40%;
+}
+.error-txt{
+    font-size: 15px;
+    margin-top: 5px;
+}
+.border-red{
+    border: 1px solid red;
+}

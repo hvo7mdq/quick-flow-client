@@ -4,25 +4,17 @@ import Login from "../pages/Auth/Login/Login"
 import Signup from "../pages/Auth/Signup/Signup"
 import Category from "../pages/Category/Category"
 import NotFound from '../pages/404/404'
+import Recover from '../pages/Auth/Login/Recover'
 
 export const Router = () => {
     return(
         <Switch>
-            <Route exact path='/' >
-            <Home />
-            </Route>
-            <Route exact path='/login' >
-            <Login />
-            </Route>
-            <Route exact path='/signup' >
-            <Signup />
-            </Route>
-            <Route exact path='/category' >
-            <Category />
-            </Route>
-            <Route path='*' >
-            <NotFound />
-            </Route>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/signup' component={Signup} />
+            <Route exact path='/category' component={Category} />
+            <Route exact path='/login/recover' component={Recover} />\
+            <Route path='*' component={NotFound} />
         </Switch> 
     )
     
