@@ -7,7 +7,7 @@ import NotFound from '../pages/404/404'
 import Recover from '../pages/Auth/Login/Recover'
 import Question from '../pages/Question/Question'
 
-export const Router = () => {
+export const Routes = () => {
     return(
         <Switch>
             <Route exact path='/' component={Home} />
