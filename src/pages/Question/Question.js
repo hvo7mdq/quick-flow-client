@@ -19,7 +19,7 @@ export default function Question() {
             <SecondaryLayout>
             <div className='ms-auto px-3 py-4 content border'>
                 <div>
-                    All Questions
+                    Top Questions
                 </div>
                 {ques ? 
                 ques.map(question=>(
