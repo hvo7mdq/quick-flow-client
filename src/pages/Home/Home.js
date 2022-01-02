@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SecondaryLayout from '../../layout/SecondaryLayout'
+import { Link } from 'react-router-dom'
+import {questions} from '../../constants/Questions/Questions'
+import Upvotes from '../../components/question/Upvotes'
+import Title from '../../components/question/Title'
+import Answer from '../../components/question/Answer'
+import Description from '../../components/question/Description'
+import Tags from '../../components/question/Tags'
 
 export default function Home() {
+    let [ques,setQuestions] = useState(null)
+    useEffect(()=>{
+        setQuestions(questions)
+        console.log(questions)
+    })
     return (
         <>
             <SecondaryLayout>
@@ -9,23 +21,19 @@ export default function Home() {
                 <div>
                     Top Questions
                 </div>
-                <div className='row mt-3'>
-                    <div className='col-1 border'>
-                        Votes
+                {ques ? 
+                ques.map(question=>(
+                    <div className='row mt-3' key={question.id}>
+                        <Upvotes upvotes={question.upvotes} />
+                        <Title title={question.Title} />
+                        <Answer ans={question.answers.length} />
+                        <Description Description={question.Description} />
+                        <Tags tags={question.tags} />
                     </div>
-                    <div className='col-11 border'>
-                        Question ko title yeta hunxa
-                    </div>
-                    <div className='col-1 border'>
-                        Answers
-                    </div>
-                    <div className='col-11 border'>
-                        Question ko hlka description jati Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus nulla aperiam ratione dignissimos ad. Sunt dolores quae maiores optio, consectetur fuga aliquam nihil necessitatibus soluta, exercitationem beatae illo odit laboriosam!
-                    </div>
-                    <div className='col-12 border'>
-                        tag tag tag tag
-                    </div>
-                </div>
+                ))
+                :
+                <p>Loading</p>
+                }                
             </div>
             </SecondaryLayout>
         </>
