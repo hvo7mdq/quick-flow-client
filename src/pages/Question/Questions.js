@@ -14,7 +14,7 @@ export default function Questions() {
     let [ques,setQuestions] = useState(null)
     useEffect(()=>{
         axiosInstance.get('posts/').then(res=>{
-            console.log(res.data.results)
+            // console.log(res.data.results)
             setQuestions(res.data.results)
         })
         // setQuestions(questions)
