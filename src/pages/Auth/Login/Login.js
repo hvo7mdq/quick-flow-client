@@ -14,6 +14,7 @@ export default function Login() {
         await axiosInstance.post('login/',values).then(res=>{
             setLoginError(null)
             localStorage.setItem('token',res.data.access)
+            localStorage.setItem('refresh',res.data.refresh)
             history.push('/')
         },err=>{
             setLoginError("Email or Password Incorrect")
