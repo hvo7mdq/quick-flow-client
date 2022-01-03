@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import SecondaryLayout from '../../layout/SecondaryLayout'
-import { Link } from 'react-router-dom'
 import {questions} from '../../constants/Questions/Questions'
 import Upvotes from '../../components/question/Upvotes'
 import Title from '../../components/question/Title'
@@ -12,7 +11,6 @@ export default function Home() {
     let [ques,setQuestions] = useState(null)
     useEffect(()=>{
         setQuestions(questions)
-        console.log(questions)
     })
     return (
         <>
@@ -23,9 +21,9 @@ export default function Home() {
                 </div>
                 {ques ? 
                 ques.map(question=>(
-                    <div className='row mt-3' key={question.id}>
-                        <Upvotes upvotes={question.upvotes} />
-                        <Title title={question.Title} />
+                    <div className='row mt-3 mb-4 border ms-2 me-2' key={question.id}>
+                        <Upvotes upvotes={question.upvotes}/>
+                        <Title title={question.Title} id={question.id} />
                         <Answer ans={question.answers.length} />
                         <Description Description={question.Description} />
                         <Tags tags={question.tags} />
