@@ -8,7 +8,7 @@ import Recover from '../pages/Auth/Login/Recover'
 import Questions from '../pages/Question/Questions'
 import SingleQuestion from '../pages/Question/SingleQuestion'
 
-export const Router = () => {
+export const Routes = () => {
     return(
         <Switch>
             <Route exact path='/' component={Home} />

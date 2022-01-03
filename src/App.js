@@ -1,13 +1,16 @@
 import MainLayout from "./layout/MainLayout";
-import { Router } from "./router/Router";
+import { Routes } from "./router/Router";
+import {BrowserRouter as Router} from 'react-router-dom'
 
 function App() {
   return (
+    <Router>
     <div className="App">
         <MainLayout>
-        <Router />
+           <Routes/>
         </MainLayout>
     </div>
+    </Router>
   );
 }
 
