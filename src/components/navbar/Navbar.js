@@ -8,6 +8,13 @@ export default function Navbar() {
     let location = useLocation()
     useEffect(()=>{
     },[location])
+
+    const logout = async()=>{
+        await axiosInstance.post('logout/',{refresh_token:localStorage.getItem('refresh')})
+        localStorage.removeItem('token')
+        localStorage.removeItem('refresh')
+        history.push('/')
+        }
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light py-2">
             <div className="container-fluid">
@@ -23,12 +30,7 @@ export default function Navbar() {
                 {localStorage.getItem('token')?
                 <div>
                     <Link to="" className='btn btn-primary me-2'>My Profile</Link>
-                    <button type="button" className='btn btn-danger' onClick={async()=>{
-                        await axiosInstance.post('logout/',{refresh_token:localStorage.getItem('refresh')})
-                        localStorage.removeItem('token')
-                        localStorage.removeItem('refresh')
-                        history.push('/')
-                        }}>Log Out</button>
+                    <button type="button" className='btn btn-danger' onClick={logout}>Log Out</button>
                 </div>
                 :
                 <div>
