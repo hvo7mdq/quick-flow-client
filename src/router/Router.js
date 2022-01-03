@@ -16,7 +16,7 @@ export const Router = () => {
             <Route exact path='/signup' component={Signup} />
             <Route exact path='/category' component={Tag} />
             <Route exact path='/login/recover' component={Recover} />
-            <Route exact path='/question' component={Questions} />
+            <Route exact path='/questions' component={Questions} />
             <Route exact path='/question/:id' component={SingleQuestion} />
             <Route path='*' component={NotFound} />
         </Switch> 

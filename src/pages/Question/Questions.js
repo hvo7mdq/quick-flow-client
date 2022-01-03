@@ -7,17 +7,25 @@ import Answer from '../../components/question/Answer'
 import Description from '../../components/question/Description'
 import Tags from '../../components/question/Tags'
 import { Link } from 'react-router-dom'
+import HelmetTitle from '../../components/Helmet/HelmetTitle'
+import axiosInstance from '../../axios'
+import Asked from '../../components/question/Asked'
 
 export default function Questions() {
     let [ques,setQuestions] = useState(null)
     useEffect(()=>{
-        setQuestions(questions)
-    })
+        axiosInstance.get('posts/').then(res=>{
+            console.log(res.data.results)
+            setQuestions(res.data.results)
+        })
+        // setQuestions(questions)
+    },[])
     return (
         <>
+            <HelmetTitle title="All Questions" />
             <SecondaryLayout>
             <div className='ms-auto px-3 py-4 content border-bottom'>
-                <div className='row'>
+                <div className='row border-bottom pb-2'>
                 <div className="col-4 d-flex align-items-center fw-bold">
                     All Questions
                 </div>
@@ -27,12 +35,13 @@ export default function Questions() {
                 </div>
                 {ques ? 
                 ques.map(question=>(
-                    <div className='row mt-3 mb-4 border ms-2 me-2' key={question.id}>
-                        <Upvotes upvotes={question.upvotes} />
-                        <Title title={question.Title} id={question.id} />
-                        <Answer ans={question.answers.length} />
-                        <Description Description={question.Description} />
-                        <Tags tags={question.tags} />
+                    <div className='row mt-3 mb-4 border-bottom ms-2 me-2' key={question.id}>
+                        <Upvotes upvotes={question.upvote_count} />
+                        <Title title={question.title} id={question.id}/>
+                        <Answer ans={question.answers.length ? question.answers.length : 0} />
+                        <Description Description={question.description} />
+                        <Tags tags={question.tag} />
+                        <Asked time={question.created_at} user={question.user.first_name +' '+ question.user.last_name}/>
                     </div>
                 ))
                 :

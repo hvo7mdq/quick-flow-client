@@ -46,3 +46,6 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
+.answered-by{
+    font-size: 13px;
+}

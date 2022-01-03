@@ -13,7 +13,7 @@ export default function VerticalNav() {
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/question" activeClassName="active" className="nav-link d-flex  align-items-center ps-4">
+                    <NavLink to="/questions" activeClassName="active" className="nav-link d-flex  align-items-center ps-4">
                         <Question />
                         <div className='ps-2'>Questions</div>
                     </NavLink>
