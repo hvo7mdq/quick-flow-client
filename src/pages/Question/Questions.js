@@ -16,9 +16,9 @@ export default function Questions() {
     return (
         <>
             <SecondaryLayout>
-            <div className='ms-auto px-3 py-4 content border'>
+            <div className='ms-auto px-3 py-4 content border-bottom'>
                 <div className='row'>
-                <div className="col-4 d-flex align-items-center">
+                <div className="col-4 d-flex align-items-center fw-bold">
                     All Questions
                 </div>
                 <div className="col-8 text-end">

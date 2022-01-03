@@ -15,8 +15,8 @@ export default function Home() {
     return (
         <>
             <SecondaryLayout>
-            <div className='ms-auto px-3 py-4 content border'>
-                <div>
+            <div className='ms-auto px-3 py-4 content border-bottom'>
+                <div className='fw-bold'>
                     Top Questions
                 </div>
                 {ques ? 
