@@ -1,21 +1,26 @@
 .ver-nav{
     width: 13%;
     min-height: calc(100vh - 55px);
+    top: 55px
 }
 .content{
     width: 87%;
+    margin-top: 55px;
 }
 .login-form{
     width: 32%;
+    margin-top: 90px;
 }
 .login-incorrect{
     height: 30px;
 }
 .signup-form{
     width: 42%;
+    margin-top: 90px;
 }
 .recover-form{
     width: 40%;
+    margin-top: 90px;
 }
 .error-txt{
     font-size: 15px;
@@ -30,4 +35,14 @@
 }
 .btn-light:hover{
     background-color: #dcdee0;
+}
+.tags{
+    background-color: #94ccf7;
+}
+.crop-text-2 {
+    -webkit-line-clamp: 3;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }

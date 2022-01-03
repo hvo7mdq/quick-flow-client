@@ -29,7 +29,7 @@ export default function Signup() {
         validationSchema={signupSchema}
         onSubmit={handleSubmit}
         >
-            <Form className='shadow-lg signup-form mx-auto mt-5 p-3 pb-1 border mb-4'>
+            <Form className='shadow-lg signup-form mx-auto p-3 pb-1 border mb-4'>
             <p className='text-center fw-bold fs-4'>Sign Up To QuickFlow</p>
             <p className='text-center w-75 mx-auto'>Create your account to ask or answer questions and unlock all features.</p>
             <div className="mb-3 d-flex justify-content-between">

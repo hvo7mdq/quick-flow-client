@@ -26,7 +26,7 @@ export default function Login() {
         validationSchema={loginSchema}
         onSubmit={handleSubmit}
         >
-        <Form className='shadow-lg login-form mx-auto mt-5 pt-3 px-3 pb-1 border'>
+        <Form className='shadow-lg login-form mx-auto pt-3 px-3 pb-1 border'>
             <p className='text-center fw-bold fs-5'>Welcome back!</p>
             <p className='text-center'>Sign in to ask or answer questions and unlock all features.</p>
             <InputField name="email" type="email" id="email" label="Email Address" >
