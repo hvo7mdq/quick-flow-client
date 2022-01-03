@@ -16,8 +16,10 @@ export default function Signup() {
     const handleSubmit =async (values) => {
         await axiosInstance.post('accounts/',{...values}).then(res=>{
             setSignupSuccess('Confirmation has been sent to your email.')
+            setSignupError(null)
         },err=>{
             setSignupError("Failed to register try again.")
+            setSignupSuccess(null)
         })
     }
 

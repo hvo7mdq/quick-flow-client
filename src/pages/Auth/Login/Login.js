@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useHistory } from 'react-router-dom'
 import loginSchema from '../../../schema/LoginSchema'
 import { Formik,Form } from 'formik'
 import HelmetTitle from '../../../components/Helmet/HelmetTitle'
@@ -9,10 +9,13 @@ import axiosInstance from '../../../axios'
 
 export default function Login() {
     const [loginError,setLoginError] = useState(null)
-
+    let history = useHistory()
     const handleSubmit =async (values) => {
         await axiosInstance.post('login/',values).then(res=>{
             setLoginError(null)
+            localStorage.setItem('token',res.data.access)
+            localStorage.setItem('refresh',res.data.refresh)
+            history.push('/')
         },err=>{
             setLoginError("Email or Password Incorrect")
         })

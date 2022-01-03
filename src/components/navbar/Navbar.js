@@ -1,7 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import React, { useEffect } from 'react'
+import { Link,useLocation,useHistory } from 'react-router-dom'
+import axiosInstance from '../../axios'
 
 export default function Navbar() {
+    const history = useHistory()
+    let location = useLocation()
+    useEffect(()=>{
+    },[location])
+
+    const logout = async()=>{
+        await axiosInstance.post('logout/',{refresh_token:localStorage.getItem('refresh')})
+        localStorage.removeItem('token')
+        localStorage.removeItem('refresh')
+        history.push('/')
+        }
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light py-2">
             <div className="container-fluid">
@@ -14,11 +27,17 @@ export default function Navbar() {
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                     </form>
                 </div>
+                {localStorage.getItem('token')?
+                <div>
+                    <Link to="" className='btn btn-primary me-2'>My Profile</Link>
+                    <button type="button" className='btn btn-danger' onClick={logout}>Log Out</button>
+                </div>
+                :
                 <div>
                     <Link to="/login" className='btn btn-primary me-2'>Log In</Link>
                     <Link to="/signup" className='btn btn-light border'>Sign Up</Link>
                 </div>
-                
+                }
             </div>
         </nav>
     )
