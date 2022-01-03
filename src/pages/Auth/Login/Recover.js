@@ -19,7 +19,7 @@ export default function Recover() {
         validationSchema={recoverSchema}
         onSubmit={handleSubmit}
         >
-            <Form className='shadow-lg recover-form mx-auto mt-5 pt-4 px-3 pb-4 border'>
+            <Form className='shadow-lg recover-form mx-auto pt-4 px-3 pb-4 border'>
                 <p className='text-center fw-bold fs-5'>Find Your Account</p>
                 <p className='text-center'>Please enter your email to search for your account.</p>
                 <InputField id="email" name="email" type="email" label="Email Address"/>

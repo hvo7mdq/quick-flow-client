@@ -5,7 +5,8 @@ import Signup from "../pages/Auth/Signup/Signup"
 import Tag from "../pages/Tag/Tag"
 import NotFound from '../pages/404/404'
 import Recover from '../pages/Auth/Login/Recover'
-import Question from '../pages/Question/Question'
+import Questions from '../pages/Question/Questions'
+import SingleQuestion from '../pages/Question/SingleQuestion'
 
 export const Routes = () => {
     return(
@@ -15,7 +16,8 @@ export const Routes = () => {
             <Route exact path='/signup' component={Signup} />
             <Route exact path='/category' component={Tag} />
             <Route exact path='/login/recover' component={Recover} />
-            <Route exact path='/question' component={Question} />
+            <Route exact path='/questions' component={Questions} />
+            <Route exact path='/question/:id' component={SingleQuestion} />
             <Route path='*' component={NotFound} />
         </Switch> 
     )
