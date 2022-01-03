@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import SecondaryLayout from '../../layout/SecondaryLayout'
-import {questions} from '../../constants/Questions/Questions'
 import Upvotes from '../../components/question/Upvotes'
 import Title from '../../components/question/Title'
 import Answer from '../../components/question/Answer'

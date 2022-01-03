@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Description from '../../components/question/Description'
 import Title from '../../components/question/Title'
-import Upvotes from '../../components/question/Upvotes'
 import SecondaryLayout from '../../layout/SecondaryLayout'
 import HelmetTitle from '../../components/Helmet/HelmetTitle'
 import axiosInstance from '../../axios'
@@ -13,7 +12,6 @@ import AnsweredBy from '../../components/SingleQuestion/AnsweredBy'
 import Correct from '../../components/SingleQuestion/Correct'
 import Comment from '../../components/SingleQuestion/Comment'
 import Time from '../../components/Asked/Time'
-import By from '../../components/Asked/By'
 
 export default function SingleQuestion() {
     let [question,setQuestion] = useState(null)
@@ -23,7 +21,6 @@ export default function SingleQuestion() {
             console.log(res.data)
             setQuestion(res.data)
         })
-        // setQuestions(questions)
     },[])
     return (
         <SecondaryLayout>
