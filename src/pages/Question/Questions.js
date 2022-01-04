@@ -29,7 +29,7 @@ export default function Questions() {
                     All Questions
                 </div>
                 <div className="col-8 text-end">
-                    <Link to='/question/create' className='btn btn-primary'>New Question</Link>
+                    <Link to='/newquestion' className='btn btn-primary'>New Question</Link>
                 </div>
                 </div>
                 {ques ? 

@@ -7,6 +7,7 @@ import NotFound from '../pages/404/404'
 import Recover from '../pages/Auth/Login/Recover'
 import Questions from '../pages/Question/Questions'
 import SingleQuestion from '../pages/Question/SingleQuestion'
+import NewQuestion from '../pages/Question/NewQuestion'
 
 export const Routes = () => {
     return(
@@ -17,7 +18,8 @@ export const Routes = () => {
             <Route exact path='/category' component={Tag} />
             <Route exact path='/login/recover' component={Recover} />
             <Route exact path='/questions' component={Questions} />
-            <Route exact path='/question/:id' component={SingleQuestion} />
+            <Route exact path='/questions/:id' component={SingleQuestion} />
+            <Route exact path='/newquestion' component={NewQuestion} />
             <Route path='*' component={NotFound} />
         </Switch> 
     )

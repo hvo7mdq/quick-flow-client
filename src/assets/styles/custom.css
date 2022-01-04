@@ -3,6 +3,9 @@
     min-height: calc(100vh - 55px);
     top: 55px
 }
+.navbar{
+    z-index: 1;
+}
 .content{
     width: 87%;
     margin-top: 55px;
@@ -48,4 +51,15 @@
 }
 .answered-by{
     font-size: 13px;
+}
+.editor-class {
+    background-color:lightgray;
+    padding: 1rem;
+    border: 1px solid #ccc;
+}
+.toolbar-class {
+    border: 1px solid #ccc;
+}
+.ql-editor{
+    min-height: 200px;
 }
