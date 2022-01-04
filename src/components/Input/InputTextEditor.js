@@ -1,6 +1,4 @@
 import React from 'react'
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import 'draft-js/dist/Draft.css';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
