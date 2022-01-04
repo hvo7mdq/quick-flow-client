@@ -4,6 +4,7 @@ import axiosInstance from '../../axios'
 import InputField from '../../components/Input/InputField'
 import InputTag from '../../components/Input/InputTag'
 import InputTextEditor from '../../components/Input/InputTextEditor'
+import { newQuestionInitialValues } from '../../constants/Form/NewQuestionInitialValues'
 import SecondaryLayout from '../../layout/SecondaryLayout'
 import questionSchema from '../../schema/QuestionSchema'
 
@@ -21,11 +22,7 @@ export default function NewQuestion() {
         <div className='ms-auto px-3 py-4 content border-bottom'>
             <Formik
             onSubmit={handleSubmit}
-            initialValues={{
-                title: '',
-                tags:[],
-                description : ""
-            }} 
+            initialValues={newQuestionInitialValues} 
             validationSchema={questionSchema}           
             >
             {({setFieldValue,values})=>(            
