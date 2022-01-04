@@ -4,7 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 
 export default function InputTextEditor({onChange}) {
     const onChanged = (description) => {
-        console.log("changed")
+        // console.log("changed")
         onChange('description',description)
     }
     const  modules  = {
