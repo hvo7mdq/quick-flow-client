@@ -18,7 +18,6 @@ export default function ChangePassword() {
         },err=>{
             // setLoginError("Email or Password Incorrect")
         })
-        console.log(values)
     }
     return (
         <>
