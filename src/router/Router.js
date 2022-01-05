@@ -5,10 +5,11 @@ import Signup from "../pages/Auth/Signup/Signup"
 import Tag from "../pages/Tag/Tag"
 import NotFound from '../pages/404/404'
 import Recover from '../pages/Auth/Login/Recover'
-import Questions from '../pages/Question/Questions'
+import Questions from '../pages/Question/Question'
 import SingleQuestion from '../pages/Question/SingleQuestion'
 import NewQuestion from '../pages/Question/NewQuestion'
 import ChangePassword from '../pages/Auth/ChangePassword/ChangePassword'
+import Profile from '../pages/Profile/Profile'
 
 export const Routes = () => {
     return(
@@ -22,6 +23,7 @@ export const Routes = () => {
             <Route exact path='/questions/:id' component={SingleQuestion} />
             <Route exact path='/newquestion' component={NewQuestion} />
             <Route exact path='/account/changepassword/:token' component={ChangePassword} />
+            <Route exact path='/profile/:id' component={Profile} />
             <Route path='*' component={NotFound} />
         </Switch> 
     )

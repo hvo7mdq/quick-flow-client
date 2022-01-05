@@ -11,7 +11,7 @@ export default function Login() {
     const [loginError,setLoginError] = useState(null)
     let history = useHistory()
     const handleSubmit =async (values) => {
-        await axiosInstance.post('login/',values).then(res=>{
+        await axiosInstance.post('/login/',values).then(res=>{
             setLoginError(null)
             localStorage.setItem('token',res.data.access)
             localStorage.setItem('refresh',res.data.refresh)

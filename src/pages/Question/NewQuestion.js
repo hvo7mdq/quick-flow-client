@@ -10,7 +10,7 @@ import questionSchema from '../../schema/QuestionSchema'
 
 export default function NewQuestion() {
     const handleSubmit = async(values) => {
-        axiosInstance.post('posts/',values).then(res=>{
+        axiosInstance.post('/posts/',values).then(res=>{
             // console.log(res)
         },err=>{
             // console.log(err)

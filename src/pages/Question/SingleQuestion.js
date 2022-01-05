@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import Description from '../../components/question/Description'
-import Title from '../../components/question/Title'
+import Description from '../../components/question/Component/Description'
+import Title from '../../components/question/Component/Title'
 import SecondaryLayout from '../../layout/SecondaryLayout'
 import HelmetTitle from '../../components/Helmet/HelmetTitle'
 import axiosInstance from '../../axios'
 import { useParams } from 'react-router-dom'
 import SingleUpvote from '../../components/SingleQuestion/SingleUpvote'
-import Tags from '../../components/question/Tags'
-import Asked from '../../components/question/Asked'
+import Tags from '../../components/question/Component/Tags'
+import Asked from '../../components/question/Component/Asked'
 import AnsweredBy from '../../components/SingleQuestion/AnsweredBy'
 import Correct from '../../components/SingleQuestion/Correct'
 import Comment from '../../components/SingleQuestion/Comment'
@@ -17,7 +17,7 @@ export default function SingleQuestion() {
     let [question,setQuestion] = useState(null)
     let { id } = useParams();
     useEffect(()=>{
-        axiosInstance.get(`posts/${id}/`).then(res=>{
+        axiosInstance.get(`/posts/${id}/`).then(res=>{
             // console.log(res.data)
             setQuestion(res.data)
         })

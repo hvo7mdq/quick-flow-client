@@ -11,12 +11,7 @@ export default function Recover() {
     const [err,setErr] = useState(null)
     const [success,setSuccess] = useState(null)
     const handleSubmit = async (values) => {
-        await axiosInstance.post('accounts/recover/',values).then(res=>{
-            console.log(res.data)
-            setErr(null)
-        },err=>{
-            setErr(err.response.data.detail)
-        })
+        await axiosInstance.post('/accounts/recover',values)
     }
     return (
         <>
