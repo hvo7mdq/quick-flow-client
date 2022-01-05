@@ -6,22 +6,23 @@ import InputField from '../../../components/Input/InputField'
 import InputConfirmPass from '../../../components/Input/InputConfirmPass'
 import changePasswordSchema from '../../../schema/ChangePasswordSchema'
 import { changePassInitialValues } from '../../../constants/Form/ChangePassInitialValues'
+import { useParams } from 'react-router-dom'
+import axiosInstance from '../../../axios'
 
 export default function ChangePassword() {
+    const {token} = useParams()
     const handleSubmit =async (values) => {
-        // await axiosInstance.post('login/',values).then(res=>{
-        //     setLoginError(null)
-        //     localStorage.setItem('token',res.data.access)
-        //     localStorage.setItem('refresh',res.data.refresh)
-        //     history.push('/')
-        // },err=>{
-        //     setLoginError("Email or Password Incorrect")
-        // })
+        await axiosInstance.post('recoverpassword/',{...values,token:token}).then(res=>{
+            // setLoginError(null)
+            // history.push('/')
+        },err=>{
+            // setLoginError("Email or Password Incorrect")
+        })
         console.log(values)
     }
     return (
         <>
-        <HelmetTitle title="Log In"/>
+        <HelmetTitle title="Change Password"/>
         <Formik
         initialValues={changePassInitialValues}
         validationSchema={changePasswordSchema}

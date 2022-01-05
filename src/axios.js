@@ -8,6 +8,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(function (config) {
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
+    console.log(config.headers.Authorization)
     return config;
   }, function (error) {
     // Do something with request error
@@ -22,8 +23,6 @@ axiosInstance.interceptors.response.use(function (response) {
   }, function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
-    if(error.response.status = 401){
-        console.log("401 error")
-    }
+    return Promise.reject(error);
   });
 export default axiosInstance

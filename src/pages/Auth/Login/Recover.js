@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Formik,Form } from 'formik'
 import recoverSchema from '../../../schema/RecoverSchema'
@@ -8,8 +8,15 @@ import { recoverInitialValues } from '../../../constants/Form/RecoverInitialValu
 import axiosInstance from '../../../axios'
 
 export default function Recover() {
+    const [err,setErr] = useState(null)
+    const [success,setSuccess] = useState(null)
     const handleSubmit = async (values) => {
-        await axiosInstance.post('accounts/recover',values)
+        await axiosInstance.post('accounts/recover/',values).then(res=>{
+            console.log(res.data)
+            setErr(null)
+        },err=>{
+            setErr(err.response.data.detail)
+        })
     }
     return (
         <>
@@ -23,10 +30,16 @@ export default function Recover() {
                 <p className='text-center fw-bold fs-5'>Find Your Account</p>
                 <p className='text-center'>Please enter your email to search for your account.</p>
                 <InputField id="email" name="email" type="email" label="Email Address"/>
-                <div className='d-flex justify-content-end mt-2'>
-                <Link to="/login" className="btn btn-light border me-3">Cancel</Link>
-                <button type="submit" className="btn btn-primary px-4">Search</button>
-                </div>                       
+                <div className='d-flex justify-content-between mt-2'>
+                    <div className='text-danger error-txt'>
+                        {err && err}
+                    </div>
+                    <div>                    
+                        <Link to="/login" className="btn btn-light border me-3">Cancel</Link>
+                        <button type="submit" className="btn btn-primary px-4">Search</button>                
+                    </div>
+                </div>   
+                                    
             </Form>
         </Formik>
         </>

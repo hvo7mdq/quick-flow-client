@@ -21,7 +21,7 @@ export const Routes = () => {
             <Route exact path='/questions' component={Questions} />
             <Route exact path='/questions/:id' component={SingleQuestion} />
             <Route exact path='/newquestion' component={NewQuestion} />
-            <Route exact path='/account/changepassword' component={ChangePassword} />
+            <Route exact path='/account/changepassword/:token' component={ChangePassword} />
             <Route path='*' component={NotFound} />
         </Switch> 
     )
