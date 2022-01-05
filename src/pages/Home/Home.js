@@ -7,7 +7,7 @@ import Question from '../../components/question/Question'
 export default function Home() {
     let [ques,setQuestions] = useState(null)
     useEffect(()=>{
-        axiosInstance.get('posts/').then(res=>{
+        axiosInstance.get('/posts/').then(res=>{
             // console.log(res.data.results)
             setQuestions(res.data.results)
         })

@@ -9,7 +9,7 @@ import axiosInstance from '../../../axios'
 
 export default function Recover() {
     const handleSubmit = async (values) => {
-        await axiosInstance.post('accounts/recover',values)
+        await axiosInstance.post('/accounts/recover',values)
     }
     return (
         <>

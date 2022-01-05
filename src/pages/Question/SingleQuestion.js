@@ -17,7 +17,7 @@ export default function SingleQuestion() {
     let [question,setQuestion] = useState(null)
     let { id } = useParams();
     useEffect(()=>{
-        axiosInstance.get(`posts/${id}/`).then(res=>{
+        axiosInstance.get(`/posts/${id}/`).then(res=>{
             // console.log(res.data)
             setQuestion(res.data)
         })
