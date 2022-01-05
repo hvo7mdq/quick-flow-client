@@ -16,7 +16,7 @@ export default function Login() {
             localStorage.setItem('token',res.data.access)
             localStorage.setItem('refresh',res.data.refresh)
             history.push('/')
-        },err=>{
+        }).catch(err=>{
             setLoginError("Email or Password Incorrect")
         })
     }
@@ -38,7 +38,7 @@ export default function Login() {
             <InputField name="password" type="password" id="password" label="Password" />
             <button type="submit" className="btn btn-primary w-100">Log In</button>
             <div className='login-incorrect d-flex justify-content-between pt-2'>
-                <p className='text-danger'>{loginError && loginError}</p>
+                <p className='text-danger'>{loginError}</p>
                 <Link to="/account/recover">Forgot Password?</Link>
             </div>
             <p className='border-top mt-3 text-center pt-2'>New to QuickFlow? <Link to='/signup'>Create an account.</Link></p>            
