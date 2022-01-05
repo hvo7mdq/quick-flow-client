@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import SecondaryLayout from '../../layout/SecondaryLayout'
-import Upvotes from '../../components/question/Upvotes'
-import Title from '../../components/question/Title'
-import Answer from '../../components/question/Answer'
-import Description from '../../components/question/Description'
-import Tags from '../../components/question/Tags'
 import { Link } from 'react-router-dom'
 import HelmetTitle from '../../components/Helmet/HelmetTitle'
 import axiosInstance from '../../axios'
-import Asked from '../../components/question/Asked'
+import Question from '../../components/question/Question'
 
 export default function Questions() {
     let [ques,setQuestions] = useState(null)
@@ -32,20 +27,7 @@ export default function Questions() {
                     <Link to='/newquestion' className='btn btn-primary'>New Question</Link>
                 </div>
                 </div>
-                {ques ? 
-                ques.map(question=>(
-                    <div className='row mt-3 mb-4 border-bottom ms-2 me-2' key={question.id}>
-                        <Upvotes upvotes={question.upvote_count} />
-                        <Title title={question.title} id={question.id}/>
-                        <Answer ans={question.answers.length ? question.answers.length : 0} />
-                        <Description Description={question.description} />
-                        <Tags tags={question.tag} />
-                        <Asked time={question.created_at} user={question.user.first_name +' '+ question.user.last_name}/>
-                    </div>
-                ))
-                :
-                <p>Loading</p>
-                }                
+                <Question ques={ques} />       
             </div>
             </SecondaryLayout>
         </>
