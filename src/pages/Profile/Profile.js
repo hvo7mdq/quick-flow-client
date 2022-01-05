@@ -17,7 +17,7 @@ export default function Profile() {
             // console.log(res.data)
             setUser(res.data)
         },err=>{
-            console.log(err)
+            // console.log(err)
         })
         // console.log(id)
         // setQuestions(questions)
