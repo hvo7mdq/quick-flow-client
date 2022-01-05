@@ -8,6 +8,7 @@ import Recover from '../pages/Auth/Login/Recover'
 import Questions from '../pages/Question/Questions'
 import SingleQuestion from '../pages/Question/SingleQuestion'
 import NewQuestion from '../pages/Question/NewQuestion'
+import ChangePassword from '../pages/Auth/ChangePassword/ChangePassword'
 
 export const Routes = () => {
     return(
@@ -16,10 +17,11 @@ export const Routes = () => {
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
             <Route exact path='/category' component={Tag} />
-            <Route exact path='/login/recover' component={Recover} />
+            <Route exact path='/account/recover' component={Recover} />
             <Route exact path='/questions' component={Questions} />
             <Route exact path='/questions/:id' component={SingleQuestion} />
             <Route exact path='/newquestion' component={NewQuestion} />
+            <Route exact path='/account/changepassword' component={ChangePassword} />
             <Route path='*' component={NotFound} />
         </Switch> 
     )
