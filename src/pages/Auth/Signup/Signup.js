@@ -14,7 +14,7 @@ export default function Signup() {
     const [signupError,setSignupError] = useState(null)
 
     const handleSubmit =async (values) => {
-        await axiosInstance.post('accounts/',{...values}).then(res=>{
+        await axiosInstance.post('/accounts/',{...values}).then(res=>{
             setSignupSuccess('Confirmation has been sent to your email.')
             setSignupError(null)
         },err=>{
