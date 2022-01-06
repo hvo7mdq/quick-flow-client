@@ -17,9 +17,10 @@ export default function Navbar() {
         try{
             var decoded = jwt_decode(localStorage.getItem('refresh'))
             setId(decoded.user_id-1)
-            console.log(decoded)
+            // console.log(decoded)
             let time = seconds_since_epoch(new Date())
-            if(time < decoded.exp){
+            // console.log(time)
+            if(time > decoded.exp){
                 localStorage.removeItem('token')
                 localStorage.removeItem('refresh')
                 history('/login')
