@@ -14,10 +14,10 @@ export default function Recover() {
         await axiosInstance.post('/accounts/recover/',values).then(res=>{
             setErr(null)
             setSuccess("Check your Email.")
-            console.log(res.data)
+            // console.log(res.data)
         },err=>{
             setSuccess(null)
-            setErr(err.response.data.detail)
+            // setErr(err.response.data.detail)
         })
     }
     return (
