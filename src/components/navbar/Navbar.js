@@ -8,9 +8,28 @@ export default function Navbar() {
     const [id,setId] = useState(null)
     const [avatar,setAvatar] = useState(null)
     let location = useLocation()
+
+    const seconds_since_epoch = (d) => { 
+        return Math.floor( d / 1000 ); 
+    }
+
     const decode = () => {
-        let decoded = jwt_decode(localStorage.getItem('refresh'))
-        setId(decoded.user_id-1)
+        try{
+            var decoded = jwt_decode(localStorage.getItem('refresh'))
+            setId(decoded.user_id-1)
+            console.log(decoded)
+            let time = seconds_since_epoch(new Date())
+            if(time < decoded.exp){
+                localStorage.removeItem('token')
+                localStorage.removeItem('refresh')
+                history('/login')
+            }
+        }catch(error){
+            localStorage.removeItem('token')
+            localStorage.removeItem('refresh')
+            history('/login')
+        }
+        
         axiosInstance.get(`/profile/${decoded.user_id-1}/`).then(res=>{
             setAvatar(res.data.avatar)
         },err=>{

@@ -4,7 +4,12 @@ let signupSchema = yup.object().shape({
     first_name: yup.string().required("Enter first name"),
     last_name: yup.string().required("Enter last name"),
     email: yup.string().email("Enter valid email").required("Email is required"),
-    password: yup.string().required("Enter password"),
+    password: yup.string().required("Enter password")
+    .min(8, 'Password is too short - should be 8 chars minimum.')
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+    ),
     password2: yup.string().when("password", {
         is: val => (val && val.length > 0 ? true : false),
         then: yup.string().oneOf(
