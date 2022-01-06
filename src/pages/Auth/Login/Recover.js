@@ -11,7 +11,14 @@ export default function Recover() {
     const [err,setErr] = useState(null)
     const [success,setSuccess] = useState(null)
     const handleSubmit = async (values) => {
-        await axiosInstance.post('/accounts/recover',values)
+        await axiosInstance.post('/accounts/recover/',values).then(res=>{
+            setErr(null)
+            setSuccess("Check your Email.")
+            console.log(res.data)
+        },err=>{
+            setSuccess(null)
+            setErr(err.response.data.detail)
+        })
     }
     return (
         <>
@@ -26,8 +33,9 @@ export default function Recover() {
                 <p className='text-center'>Please enter your email to search for your account.</p>
                 <InputField id="email" name="email" type="email" label="Email Address"/>
                 <div className='d-flex justify-content-between mt-2'>
-                    <div className='text-danger error-txt'>
-                        {err && err}
+                    <div>
+                        <p className='d-inline-block text-danger error-txt '>{err && err}</p>
+                        <p className='d-inline-block text-success'>{success && success}</p>
                     </div>
                     <div>                    
                         <Link to="/login" className="btn btn-light border me-3">Cancel</Link>
