@@ -10,19 +10,41 @@ import SingleQuestion from '../pages/Question/SingleQuestion'
 import NewQuestion from '../pages/Question/NewQuestion'
 import ChangePassword from '../pages/Auth/ChangePassword/ChangePassword'
 import Profile from '../pages/Profile/Profile'
+import { PrivateRoute } from './PrivateRoute'
+import { PublicRoute } from './PublicRoutes'
 
 export const Routes = () => {
     return(
         <Switch>
             <Route exact path='/' component={Home} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/signup' component={Signup} />
+            <Route exact path='/login' >
+                <PublicRoute>
+                    <Login/>
+                </PublicRoute>
+            </Route>
+            <Route exact path='/signup'>
+                <PublicRoute>
+                    <Signup/>
+                </PublicRoute>
+            </Route>
             <Route exact path='/category' component={Tag} />
-            <Route exact path='/account/recover' component={Recover} />
+            <Route exact path='/account/recover'>
+                <PublicRoute>
+                    <Recover/>
+                </PublicRoute>
+            </Route>
             <Route exact path='/questions' component={Questions} />
             <Route exact path='/questions/:id' component={SingleQuestion} />
-            <Route exact path='/newquestion' component={NewQuestion} />
-            <Route exact path='/account/changepassword/:token' component={ChangePassword} />
+            <Route exact path='/newquestion' >
+                <PrivateRoute>
+                    <NewQuestion />
+                </PrivateRoute>
+            </Route>
+            <Route exact path='/account/changepassword/:token' >
+                <PublicRoute>
+                    <ChangePassword/>
+                </PublicRoute>
+            </Route>
             <Route exact path='/profile/:id' component={Profile} />
             <Route path='*' component={NotFound} />
         </Switch> 
