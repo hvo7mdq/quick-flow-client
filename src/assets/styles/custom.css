@@ -63,3 +63,13 @@
 .ql-editor{
     min-height: 200px;
 }
+.dropdown-toggle::after {
+    content: none;
+}
+.nav-avatar{
+    height: 35px;
+    width: 35px;
+}
+.drp-nav{
+    min-width: 120px;
+}

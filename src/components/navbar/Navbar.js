@@ -1,12 +1,45 @@
-import axios from 'axios'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link,useLocation,useHistory } from 'react-router-dom'
 import axiosInstance from '../../axios'
+import jwt_decode from "jwt-decode";
 
 export default function Navbar() {
     const history = useHistory()
+    const [id,setId] = useState(null)
+    const [avatar,setAvatar] = useState(null)
     let location = useLocation()
+
+    const seconds_since_epoch = (d) => { 
+        return Math.floor( d / 1000 ); 
+    }
+
+    const decode = () => {
+        try{
+            var decoded = jwt_decode(localStorage.getItem('refresh'))
+            setId(decoded.user_id-1)
+            console.log(decoded)
+            let time = seconds_since_epoch(new Date())
+            if(time < decoded.exp){
+                localStorage.removeItem('token')
+                localStorage.removeItem('refresh')
+                history('/login')
+            }
+        }catch(error){
+            localStorage.removeItem('token')
+            localStorage.removeItem('refresh')
+            history('/login')
+        }
+        
+        axiosInstance.get(`/profile/${decoded.user_id-1}/`).then(res=>{
+            setAvatar(res.data.avatar)
+        },err=>{
+            // console.log(err)
+        })
+    }
     useEffect(()=>{
+        if(localStorage.getItem('refresh')){
+            decode()
+        }
     },[location])
 
     const logout = async()=>{
@@ -27,10 +60,15 @@ export default function Navbar() {
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                     </form>
                 </div>
-                {localStorage.getItem('token')?
-                <div>
-                    <Link to="" className='btn btn-primary me-2'>My Profile</Link>
-                    <button type="button" className='btn btn-danger' onClick={logout}>Log Out</button>
+                {localStorage.getItem('token')?            
+                <div className="btn-group">
+                    <a type="button" className="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src={`${process.env.REACT_APP_API_URL_1}${avatar}`} className='border rounded-circle nav-avatar'/>
+                    </a>
+                    <div className="dropdown-menu dropdown-menu-end drp-nav text-center">
+                        <Link className="dropdown-item" to={`profile/${id}`} >Profile</Link>
+                        <button className="dropdown-item" onClick={logout}>Log Out</button>
+                    </div>
                 </div>
                 :
                 <div>
