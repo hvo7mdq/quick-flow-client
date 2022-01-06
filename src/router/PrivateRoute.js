@@ -5,7 +5,7 @@ export const PrivateRoute = ({children}) => {
     let token = localStorage.getItem('token')
     if(token){
         try{
-            let tokenExp = jwtDecode(token).exp
+            var tokenExp = jwtDecode(token).exp
         }catch(error){
             localStorage.clear()
             return <Redirect to='/login' />
