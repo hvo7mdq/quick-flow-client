@@ -23,13 +23,11 @@ export default function Navbar() {
             if(time > decoded.exp){
                 localStorage.removeItem('token')
                 localStorage.removeItem('refresh')
-                console.log('asdas')
                 history('/login')
             }
         }catch(error){
             localStorage.removeItem('token')
             localStorage.removeItem('refresh')
-            console.log('12123')
             history('/login')
         }
         
