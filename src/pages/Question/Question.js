@@ -7,9 +7,20 @@ import Question from '../../components/question/Question'
 
 export default function Questions() {
     let [ques,setQuestions] = useState(null)
+    // let [next,setNext] = useState(null)
+    // let [prev,setPrev] = useState(null)
     useEffect(()=>{
         axiosInstance.get('/posts/').then(res=>{
-            // console.log(res.data.results)
+            // if(res.data.next){
+            //     setNext(res.data.next)
+            // }else{
+            //     setNext(null)
+            // }
+            // if(res.data.prev){
+            //     setPrev(res.data.prev)
+            // }else{
+            //     setPrev(null)
+            // }
             setQuestions(res.data.results)
         })
         // setQuestions(questions)
@@ -21,13 +32,15 @@ export default function Questions() {
             <div className='ms-auto px-3 py-4 content border-bottom'>
                 <div className='row border-bottom pb-2'>
                 <div className="col-4 d-flex align-items-center fw-bold">
-                    All Questions
+                    Top Questions
                 </div>
                 <div className="col-8 text-end">
                     <Link to='/newquestion' className='btn btn-primary'>New Question</Link>
                 </div>
                 </div>
-                <Question ques={ques} />       
+                <Question ques={ques} />    
+                {/* {prev && <button to={prev}>Prev</button>}
+                {next && <button onClick={next}>Next</button>} */}
             </div>
             </SecondaryLayout>
         </>

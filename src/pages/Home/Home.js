@@ -19,7 +19,7 @@ export default function Home() {
             <SecondaryLayout>
             <div className='ms-auto px-3 py-4 content border-bottom'>
                 <div className='fw-bold border-bottom pb-2'>
-                    Top Questions
+                    All Questions
                 </div>
                 <Question ques={ques} />               
             </div>

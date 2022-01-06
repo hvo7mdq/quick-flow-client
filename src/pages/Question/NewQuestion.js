@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik'
-import React from 'react'
+import React, { useState } from 'react'
 import axiosInstance from '../../axios'
 import InputField from '../../components/Input/InputField'
 import InputTag from '../../components/Input/InputTag'
@@ -9,11 +9,15 @@ import SecondaryLayout from '../../layout/SecondaryLayout'
 import questionSchema from '../../schema/QuestionSchema'
 
 export default function NewQuestion() {
+    const [success,setSuccess] = useState(null)
+    const [error,setError] = useState(null)
     const handleSubmit = async(values) => {
         axiosInstance.post('/posts/',values).then(res=>{
-            // console.log(res)
+            setError(null)
+            setSuccess("Question Asked")
         },err=>{
-            // console.log(err)
+            setSuccess(null)
+            setError("Failed to ask try again")
         })
         // console.log(values)
     }
@@ -32,6 +36,8 @@ export default function NewQuestion() {
                     <InputTextEditor description="description" onChange={setFieldValue}/>
                     <InputTag tags={values.tags} id="tags" name="tags" type="text" setFieldValue={setFieldValue}/>
                     <button type="submit" className="btn btn-primary d-block">Post Question</button>
+                    <p className='text-danger'>{error && error}</p>
+                    <p className='text-success'>{success && success}</p>
                 </Form>
                 )}
             </Formik>
