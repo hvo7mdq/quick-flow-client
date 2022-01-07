@@ -3,7 +3,7 @@ import Description from '../../components/question/Component/Description'
 import Title from '../../components/question/Component/Title'
 import SecondaryLayout from '../../layout/SecondaryLayout'
 import HelmetTitle from '../../components/Helmet/HelmetTitle'
-import { axiosInstanceNoHead } from '../../axios'
+import axiosInstance from '../../axios'
 import { useParams } from 'react-router-dom'
 import SingleUpvote from '../../components/SingleQuestion/SingleUpvote'
 import Tags from '../../components/question/Component/Tags'
@@ -16,7 +16,7 @@ export default function SingleQuestion() {
     let [question,setQuestion] = useState(null)
     let { id } = useParams();
     const fetchQues = (id) => {
-        axiosInstanceNoHead.get(`/posts/${id}/`).then(res=>{
+        axiosInstance.get(`/posts/${id}/`).then(res=>{
             // console.log(res.data)
             setQuestion(res.data)
         })

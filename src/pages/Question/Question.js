@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import SecondaryLayout from '../../layout/SecondaryLayout'
 import { Link } from 'react-router-dom'
 import HelmetTitle from '../../components/Helmet/HelmetTitle'
-import { axiosInstanceNoHead } from '../../axios'
+import axiosInstance from '../../axios'
 import Question from '../../components/question/Question'
 
 export default function Questions() {
     let [ques,setQuestions] = useState(null)
     useEffect(()=>{
-        axiosInstanceNoHead.get('/posts/').then(res=>{
+        axiosInstance.get('/posts/').then(res=>{
             setQuestions(res.data.results)
         })
     },[])
