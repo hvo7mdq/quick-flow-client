@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Link,useLocation,useHistory } from 'react-router-dom'
 import axiosInstance from '../../axios'
 import jwt_decode from "jwt-decode";
+import { Field, Form, Formik } from 'formik';
+import searchSchema from '../../schema/SearchSchema';
+import { searchInitialValues } from '../../constants/Form/SearchInitialValues';
 
 export default function Navbar() {
     const history = useHistory()
@@ -11,6 +14,10 @@ export default function Navbar() {
 
     const seconds_since_epoch = (d) => { 
         return Math.floor( d / 1000 ); 
+    }
+
+    const search = (values) => {
+        history.push(`/search/${values.search}`)
     }
 
     const decode = () => {
@@ -57,9 +64,17 @@ export default function Navbar() {
                 </button>
                 <div className='d-flex w-50 justify-content-around'>
                     <Link to="/" className="navbar-brand" href="#">QuickFlow</Link>
-                    <form className="d-flex w-75">
+                    <Formik
+                    initialValues={searchInitialValues}
+                    onSubmit={search}
+                    validationSchema={searchSchema}>
+                        <Form className="d-flex w-75">
+                            <Field id="search" name="search" placeholder="Search" className="form-control me-2" />
+                        </Form>
+                    </Formik>
+                    {/* <form className="d-flex w-75">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    </form>
+                    </form> */}
                 </div>
                 {localStorage.getItem('token')?            
                 <div className="btn-group">

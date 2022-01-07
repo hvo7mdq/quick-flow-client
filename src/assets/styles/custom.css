@@ -76,3 +76,9 @@
 .comment{
     font-size: 13px;
 }
+/* .loading{
+    min-height: 63vh;
+} */
+.content-100{
+    min-height: 80vh;
+}
