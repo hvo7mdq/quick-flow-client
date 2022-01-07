@@ -5,9 +5,9 @@ import SecondaryLayout from '../../layout/SecondaryLayout'
 export default function Tag() {
     useEffect(()=>{
         axiosInstance.get('tags/').then(res=>{
-            console.log(res)
+            // console.log(res)
         },err=>{
-            console.log(err)
+            // console.log(err)
         })
     },[])
     return (

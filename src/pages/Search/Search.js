@@ -11,7 +11,7 @@ export default function Search() {
     useEffect(()=>{
         axiosInstance.get(`posts/?search=${query}`).then(res=>{
             // console.log(res.data.results)
-            console.log(query)
+            // console.log(query)
             setQuestion(res.data.results)
         },err=>{
             // console.log(err.response)

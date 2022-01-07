@@ -24,7 +24,6 @@ export default function QuesComment({comments,post_id,fetchQues}) {
     }
     return (
         <div className="row justify-content-end">
-        {console.log(comments)}
         <div className="col-11 border-top">
         {comments && comments.length > 0 && comments.map((comment,index)=>(
             <div className="col-12 comment border-bottom pb-1 ps-2" key={`${comment}-${index}`}>
