@@ -9,18 +9,12 @@ export default function Profile() {
     let [user,setUser] = useState(null)
     let {id} = useParams()
     useEffect(()=>{
-        // axiosInstance.get('posts/').then(res=>{
-        //     // console.log(res.data.results)
-        //     setQuestions(res.data.results)
-        // })
         axiosInstance.get(`/profile/${id}/`).then(res=>{
-            // console.log(res.data)
             setUser(res.data)
+            setQuestions(res.data.posts)
         },err=>{
             // console.log(err)
         })
-        // console.log(id)
-        // setQuestions(questions)
     },[])
     return (
         <SecondaryLayout>
@@ -28,7 +22,7 @@ export default function Profile() {
             <div className="ms-auto px-3 py-4 content border-bottom">
                 <div className="row">
                     <div className="col-8">
-                        <p className='fw-bold fs-5'>User Post</p>
+                        <p className='fw-bold fs-5'>Your Questions</p>
                         <UserQuestion ques={ques} />
                     </div>
                     <div className="col-4">

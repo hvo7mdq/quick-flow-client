@@ -16,7 +16,7 @@ export default function UserQuestion({ques}) {
                     <Title title={question.title} id={question.id}/>
                     <Answer ans={question.answers.length ? question.answers.length : 0} />
                     <Description Description={question.description} />
-                    <Tags tags={question.tag} />
+                    <Tags tags={question.tags} />
                     <div className='text-end mb-2 mt-0 pt-0'>
                     <Time time={question.created_at}/>
                     </div>

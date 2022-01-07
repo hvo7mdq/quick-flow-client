@@ -17,7 +17,7 @@ export default function Question({ques}) {
                     <Answer ans={question.answers.length ? question.answers.length : 0} />
                     <Description Description={question.description} />
                     <Tags tags={question.tags} />
-                    <Asked time={question.created_at} user={question.user.first_name +' '+ question.user.last_name}/>
+                    <Asked time={question.created_at} user={question.user.first_name +' '+ question.user.last_name} user_id={question.user.id}/>
                 </div>
             ))
             :

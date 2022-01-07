@@ -4,14 +4,23 @@ import { commentInitialValues } from '../../constants/Form/CommentInitialValues'
 import commentSchema from '../../schema/CommentSchema'
 import CommentInput from '../Input/CommentInput'
 import axiosInstance from '../../axios'
+import { useHistory } from 'react-router-dom'
+import checkAuth from '../../helper/CheckAuth'
 
-export default function Comment({comments,ans_id}) {
+export default function Comment({comments,ans_id,fetchQues,post_id}) {
+    let history = useHistory()
     const handleComment = async(values) => {
-        axiosInstance.post('/answer_comments/',{...values,answer:ans_id}).then(res=>{
-            console.log(res)
-        },err=>{
-            console.log(err)
-        })
+        let auth = checkAuth()
+        if(auth){
+            axiosInstance.post('/answer_comments/',{...values,answer:ans_id}).then(res=>{
+                console.log(res)
+                fetchQues(post_id)
+            },err=>{
+                console.log(err)
+            })
+        }else{
+            history.push('/login')
+        }        
     }
     return (
         <div className="row justify-content-end">

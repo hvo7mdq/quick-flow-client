@@ -2,28 +2,15 @@ import React, { useEffect, useState } from 'react'
 import SecondaryLayout from '../../layout/SecondaryLayout'
 import { Link } from 'react-router-dom'
 import HelmetTitle from '../../components/Helmet/HelmetTitle'
-import axiosInstance from '../../axios'
+import { axiosInstanceNoHead } from '../../axios'
 import Question from '../../components/question/Question'
 
 export default function Questions() {
     let [ques,setQuestions] = useState(null)
-    // let [next,setNext] = useState(null)
-    // let [prev,setPrev] = useState(null)
     useEffect(()=>{
-        axiosInstance.get('/posts/').then(res=>{
-            // if(res.data.next){
-            //     setNext(res.data.next)
-            // }else{
-            //     setNext(null)
-            // }
-            // if(res.data.prev){
-            //     setPrev(res.data.prev)
-            // }else{
-            //     setPrev(null)
-            // }
+        axiosInstanceNoHead.get('/posts/').then(res=>{
             setQuestions(res.data.results)
         })
-        // setQuestions(questions)
     },[])
     return (
         <>
@@ -32,7 +19,7 @@ export default function Questions() {
             <div className='ms-auto px-3 py-4 content border-bottom'>
                 <div className='row border-bottom pb-2'>
                 <div className="col-4 d-flex align-items-center fw-bold">
-                    Top Questions
+                    All Questions
                 </div>
                 <div className="col-8 text-end">
                     <Link to='/newquestion' className='btn btn-primary'>New Question</Link>
