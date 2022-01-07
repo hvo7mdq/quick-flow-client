@@ -23,7 +23,6 @@ export default function NewQuestion() {
     }
     return (
         <SecondaryLayout>
-        <div className='ms-auto px-3 py-4 content border-bottom'>
             <Formik
             onSubmit={handleSubmit}
             initialValues={newQuestionInitialValues} 
@@ -41,7 +40,6 @@ export default function NewQuestion() {
                 </Form>
                 )}
             </Formik>
-        </div>
         </SecondaryLayout>
     )
 }
