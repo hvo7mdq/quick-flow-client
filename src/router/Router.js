@@ -13,6 +13,7 @@ import Profile from '../pages/Profile/Profile'
 import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './PublicRoutes'
 import Search from '../pages/Search/Search'
+import SpecificTag from '../pages/Tag/SpecificTag'
 
 export const Routes = () => {
     return(
@@ -29,6 +30,7 @@ export const Routes = () => {
                 </PublicRoute>
             </Route>
             <Route exact path='/tags' component={Tag} />
+            <Route exact path='/tags/:tag' component={SpecificTag} />
             <Route exact path='/account/recover'>
                 <PublicRoute>
                     <Recover/>

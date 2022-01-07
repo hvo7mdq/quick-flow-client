@@ -1,16 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function SingleTag({tags}) {
-    return (   
-        <>
-        <p className='fw-bold fs-5'>Tags</p>
+    return (  
         <div className="row gap-5 justify-content-center mt-4">
             {tags.map(tag=>(
-                <div className="col-3 border text-center rounded text-primary tags py-3" key={`${tag.tag}-${tag.id}`}>
+                <Link to={`/tags/${tag.tag}`} className="col-3 border text-center rounded text-primary tags py-3" key={`${tag.tag}-${tag.id}`}>
                     {tag.tag}
-                </div>
+                </Link>
             ))}
         </div>
-        </>
     )
 }
