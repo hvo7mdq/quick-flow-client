@@ -11,6 +11,7 @@ import Asked from '../../components/question/Component/Asked'
 import QuesComment from '../../components/SingleQuestion/QuesComment'
 import Time from '../../components/Asked/Time'
 import AnswerQues from '../../components/SingleQuestion/AnswerQues'
+import SingleTitle from '../../components/SingleQuestion/SingleTitle'
 
 export default function SingleQuestion() {
     let [question,setQuestion] = useState(null)
@@ -28,8 +29,8 @@ export default function SingleQuestion() {
         <SecondaryLayout>        
         <HelmetTitle title={question?question.title:'Title'} />
         {question ? 
-            <div className='ms-auto px-3 py-4 content border'>
-                <Title title={question.title}/>
+            <div>
+                <SingleTitle title={question.title} id={question.id} />
                 <div className='border-bottom pt-1 d-flex'>
                     <Time time={question.created_at} />
                 </div>
@@ -43,7 +44,11 @@ export default function SingleQuestion() {
                 </div>
             </div>
         :
-        <p>Loading</p>}
+        <div className="d-flex justify-content-center loading">
+            <div className="spinner-border text-primary mx-auto mt-4" role="status">
+            <span className="sr-only"></span>
+            </div>
+        </div>}
         </SecondaryLayout>
     )
 }

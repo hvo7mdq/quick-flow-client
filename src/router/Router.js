@@ -12,6 +12,7 @@ import ChangePassword from '../pages/Auth/ChangePassword/ChangePassword'
 import Profile from '../pages/Profile/Profile'
 import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './PublicRoutes'
+import Search from '../pages/Search/Search'
 
 export const Routes = () => {
     return(
@@ -27,7 +28,7 @@ export const Routes = () => {
                     <Signup/>
                 </PublicRoute>
             </Route>
-            <Route exact path='/category' component={Tag} />
+            <Route exact path='/tags' component={Tag} />
             <Route exact path='/account/recover'>
                 <PublicRoute>
                     <Recover/>
@@ -46,6 +47,7 @@ export const Routes = () => {
                 </PublicRoute>
             </Route>
             <Route exact path='/profile/:id' component={Profile} />
+            <Route exact path='/search/:query' component={Search} />
             <Route path='*' component={NotFound} />
         </Switch> 
     )

@@ -16,7 +16,6 @@ export default function Questions() {
         <>
             <HelmetTitle title="All Questions" />
             <SecondaryLayout>
-            <div className='ms-auto px-3 py-4 content border-bottom'>
                 <div className='row border-bottom pb-2'>
                 <div className="col-4 d-flex align-items-center fw-bold">
                     All Questions
@@ -26,9 +25,6 @@ export default function Questions() {
                 </div>
                 </div>
                 <Question ques={ques} />    
-                {/* {prev && <button to={prev}>Prev</button>}
-                {next && <button onClick={next}>Next</button>} */}
-            </div>
             </SecondaryLayout>
         </>
     )

@@ -17,12 +17,10 @@ export default function Home() {
         <>
             <HelmetTitle title="Home" />
             <SecondaryLayout>
-            <div className='ms-auto px-3 py-4 content border-bottom'>
                 <div className='fw-bold border-bottom pb-2'>
                     Top Questions
                 </div>
-                <Question ques={ques} />               
-            </div>
+                <Question ques={ques} />     
             </SecondaryLayout>
         </>
     )

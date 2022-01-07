@@ -1,5 +1,4 @@
 import axios from "axios"
-import { useHistory } from "react-router-dom"
 
 const baseURL = process.env.REACT_APP_API_URL_2
 const api = '/api'
@@ -11,8 +10,8 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(function (config) {
   if(localStorage.getItem('token')){
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
-    return config;
   }
+  return config;
   }, function (error) {
     // Do something with request error
     return Promise.reject(error);

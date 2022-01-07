@@ -18,12 +18,15 @@ export default function Profile() {
     },[])
     return (
         <SecondaryLayout>
-        {user && 
-            <div className="ms-auto px-3 py-4 content border-bottom">
+        {user ?
                 <div className="row">
                     <div className="col-8">
-                        <p className='fw-bold fs-5'>Your Questions</p>
+                        <p className='fw-bold fs-5'>{user.user.first_name + ' ' +user.user.last_name}'s Questions</p>
+                        {ques && ques.length>0 ?
                         <UserQuestion ques={ques} />
+                        :
+                        <p>No data</p>
+                        }
                     </div>
                     <div className="col-4">
                         <div className="col-12" style={{height:"300px",width:"300px"}}>
@@ -36,6 +39,11 @@ export default function Profile() {
                             {user.user.email}
                         </div>
                     </div>
+                </div>
+            :
+            <div className="d-flex justify-content-center">
+                <div className="spinner-border text-primary mx-auto mt-4" role="status">
+                <span className="sr-only"></span>
                 </div>
             </div>
         }
