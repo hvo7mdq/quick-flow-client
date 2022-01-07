@@ -4,7 +4,6 @@ import { commentInitialValues } from '../../constants/Form/CommentInitialValues'
 import commentSchema from '../../schema/CommentSchema'
 import CommentInput from '../Input/CommentInput'
 import axiosInstance from '../../axios'
-import jwtDecode from 'jwt-decode'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import checkAuth from '../../helper/CheckAuth'
 
@@ -14,10 +13,10 @@ export default function QuesComment({comments,post_id,fetchQues}) {
         let auth = checkAuth()
         if(auth){
             axiosInstance.post('/post_comments/',{...values,post:post_id}).then(res=>{
-                console.log(res)
+                // console.log(res)
                 fetchQues(post_id)
             },err=>{
-                console.log(err)
+                // console.log(err)
             })
         }else{
             history.push('/login')

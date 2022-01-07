@@ -26,7 +26,6 @@ export default function SingleQuestion() {
     },[])
     return (
         <SecondaryLayout>        
-        {console.log(question)}
         <HelmetTitle title={question?question.title:'Title'} />
         {question ? 
             <div className='ms-auto px-3 py-4 content border'>

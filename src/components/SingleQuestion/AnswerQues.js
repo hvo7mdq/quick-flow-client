@@ -15,7 +15,7 @@ import axiosInstance from '../../axios'
 export default function AnswerQues({answers,post_id,fetchQues}) {
     let history = useHistory()
     const postAnswer = async(values)=> {
-        console.log(values)
+        // console.log(values)
         let auth = checkAuth()
         if(auth){
             await axiosInstance.post('answers/',{...values,post:post_id})

@@ -13,7 +13,7 @@ export default function Comment({comments,ans_id,fetchQues,post_id}) {
         let auth = checkAuth()
         if(auth){
             axiosInstance.post('/answer_comments/',{...values,answer:ans_id}).then(res=>{
-                console.log(res)
+                // console.log(res)
                 fetchQues(post_id)
             },err=>{
                 console.log(err)
@@ -24,7 +24,6 @@ export default function Comment({comments,ans_id,fetchQues,post_id}) {
     }
     return (
         <div className="row justify-content-end">
-        {console.log(comments)}
         <div className="col-11 border-top">
         {comments && comments.length > 0 && comments.map((comment,index)=>(
             <div className="col-12 comment border-bottom pb-1 ps-2" key={`${comment}-${index}`}>
