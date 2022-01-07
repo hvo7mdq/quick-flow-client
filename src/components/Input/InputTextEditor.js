@@ -2,10 +2,10 @@ import React from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-export default function InputTextEditor({onChange}) {
-    const onChanged = (description) => {
+export default function InputTextEditor({onChange,description}) {
+    const onChanged = (val) => {
         // console.log("changed")
-        onChange('description',description)
+        onChange(description,val)
     }
     const  modules  = {
         toolbar: [

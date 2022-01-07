@@ -7,6 +7,10 @@ const axiosInstance = axios.create({
     baseURL : baseURL + api
 })
 
+export const axiosInstanceNoHead = axios.create({
+  baseURL : baseURL + api
+})
+
 axiosInstance.interceptors.request.use(function (config) {
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
     return config;

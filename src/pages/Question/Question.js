@@ -2,17 +2,15 @@ import React, { useEffect, useState } from 'react'
 import SecondaryLayout from '../../layout/SecondaryLayout'
 import { Link } from 'react-router-dom'
 import HelmetTitle from '../../components/Helmet/HelmetTitle'
-import axiosInstance from '../../axios'
+import { axiosInstanceNoHead } from '../../axios'
 import Question from '../../components/question/Question'
 
 export default function Questions() {
     let [ques,setQuestions] = useState(null)
     useEffect(()=>{
-        axiosInstance.get('/posts/').then(res=>{
-            // console.log(res.data.results)
+        axiosInstanceNoHead.get('/posts/').then(res=>{
             setQuestions(res.data.results)
         })
-        // setQuestions(questions)
     },[])
     return (
         <>
@@ -27,7 +25,9 @@ export default function Questions() {
                     <Link to='/newquestion' className='btn btn-primary'>New Question</Link>
                 </div>
                 </div>
-                <Question ques={ques} />       
+                <Question ques={ques} />    
+                {/* {prev && <button to={prev}>Prev</button>}
+                {next && <button onClick={next}>Next</button>} */}
             </div>
             </SecondaryLayout>
         </>
