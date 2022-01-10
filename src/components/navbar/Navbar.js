@@ -54,7 +54,7 @@ export default function Navbar() {
         await axiosInstance.post('logout/',{refresh_token:localStorage.getItem('refresh')})
         localStorage.removeItem('token')
         localStorage.removeItem('refresh')
-        history.push('/')
+        history.push('/?page=1')
         }
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light py-2 position-fixed top-0 w-100">
@@ -63,7 +63,7 @@ export default function Navbar() {
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className='d-flex w-50 justify-content-around'>
-                    <Link to="/" className="navbar-brand" href="#">QuickFlow</Link>
+                    <Link to="/?page=1" className="navbar-brand" href="#">QuickFlow</Link>
                     <Formik
                     initialValues={searchInitialValues}
                     onSubmit={search}

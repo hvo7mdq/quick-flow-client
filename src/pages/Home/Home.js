@@ -10,7 +10,7 @@ export default function Home() {
     let [ques,setQuestions] = useState(null)
     let [paginaton,setPagination] = useState(null)
     let query = useQuery()
-    let page = query.get("page")
+    let page = query.get("page") || 1
     useEffect(()=>{
         axiosInstance.get(`/posts/?page=${page}`).then(res=>{
             // console.log(res.data.results)

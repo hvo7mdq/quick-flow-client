@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Description from '../question/Component/Description'
 import Correct from './Correct'
 import AnsweredBy from './AnsweredBy'
@@ -15,22 +15,24 @@ import AnsUpvote from './AnsUpvote'
 export default function AnswerQues({answers,post_id,fetchQues,user_id}) {
     let history = useHistory()
     let auth = checkAuth()
+    let [err,setErr] = useState(null)
     const postAnswer = async(values)=> {
         // console.log(values)
         if(auth[0]){
-            await axiosInstance.post('answers/',{...values,post:post_id})
+            await axiosInstance.post('answers/',{...values,post:post_id}).catch(err=>{
+                setErr(err.response.data.detail)
+            })
             fetchQues(post_id)
         }else{
-            history.push('/')
+            history.push('/login')
         }
     }
     const correctAnswer = async (id) => {
         if(auth[1].user_id === user_id){
-            await axiosInstance.patch('answers/right_answer/',{answer:id}).then(res=>{
+            let up = await axiosInstance.patch('answers/right_answer/',{answer:id})
+            up.then(res=>{
                 // console.log(res)
                 fetchQues(post_id)
-            },err=>{
-                // console.log(err)
             })
         }
     }
@@ -46,6 +48,7 @@ export default function AnswerQues({answers,post_id,fetchQues,user_id}) {
                 <Form>
                     <InputTextEditor description="answer" onChange={setFieldValue}/>
                     <button type="submit" className="btn btn-primary d-block">Post Answer</button>
+                    <p className='text-danger mt-2'>{err && err}</p>
                 </Form>
             )}
             </Formik>

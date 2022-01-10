@@ -14,6 +14,7 @@ import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './PublicRoutes'
 import Search from '../pages/Search/Search'
 import SpecificTag from '../pages/Tag/SpecificTag'
+import EditQuestion from '../pages/Question/EditQuestion'
 
 export const Routes = () => {
     return(
@@ -41,6 +42,11 @@ export const Routes = () => {
             <Route exact path='/newquestion' >
                 <PrivateRoute>
                     <NewQuestion />
+                </PrivateRoute>
+            </Route>
+            <Route exact path='/editquestion/:id' >
+                <PrivateRoute>
+                    <EditQuestion />
                 </PrivateRoute>
             </Route>
             <Route exact path='/account/changepassword/:token' >

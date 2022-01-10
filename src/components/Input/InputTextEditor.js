@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-export default function InputTextEditor({onChange,description}) {
+export default function InputTextEditor({onChange,description,value,...props}) {
     const onChanged = (val) => {
         // console.log("changed")
         onChange(description,val)
     }
+    useEffect(()=>{
+        onChange(description,value)
+    },[])
     const  modules  = {
         toolbar: [
             [{ font: [] }],
@@ -22,6 +25,6 @@ export default function InputTextEditor({onChange,description}) {
         ],
     };
     return (
-        <ReactQuill className='mb-3' modules={modules} onChange={onChanged} theme="snow" placeholder="Content goes here..."/>
+        <ReactQuill defaultValue={value} className='mb-3' modules={modules} onChange={onChanged} theme="snow" placeholder="Content goes here..."/>
     )
 }

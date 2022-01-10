@@ -10,12 +10,16 @@ export default function Pagination({page_no}) {
         pagination.push(i)
     }
     return (
-        <div className='text-center'>
+        <nav aria-label="Page navigation example">
+            <ul className="pagination justify-content-center">
             {pagination.length > 0 && pagination.map(page=>(
-                <div key={`index-${page}`} className='d-inline px-2 mx-1'>
-                    <Link to={`${pathname}?page=${page}`}>{page}</Link>
+                <div key={`index-${page}`} >
+                    <li className="page-item">
+                        <Link className='page-link' to={`${pathname}?page=${page}`}>{page}</Link>
+                    </li>
                 </div>
             ))}
-        </div>
+            </ul>
+        </nav>
     )
 }
