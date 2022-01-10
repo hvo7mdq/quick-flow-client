@@ -11,7 +11,7 @@ export default function Comment({comments,ans_id,fetchQues,post_id}) {
     let history = useHistory()
     const handleComment = async(values) => {
         let auth = checkAuth()
-        if(auth){
+        if(auth[0]){
             axiosInstance.post('/answer_comments/',{...values,answer:ans_id}).then(res=>{
                 // console.log(res)
                 fetchQues(post_id)

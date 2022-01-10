@@ -2,19 +2,19 @@ import React, { useState } from 'react'
 import { Downvote, Upvote } from '../../assets/icons/Icons'
 import axiosInstance from '../../axios'
 
-export default function SingleUpvote({upvotes,post_id,fetchQues}) {
+export default function AnsUpvote({upvotes,ans_id,fetchQues,post_id}) {
     const upvote = () => {
-        axiosInstance.patch('posts/upvote_count/',{post:post_id,vote_signal:'up'}).then(res=>{
+        axiosInstance.patch('answers/upvote_count/',{answer:ans_id,vote_signal:'up'}).then(res=>{
             fetchQues(post_id)
         },err=>{
-            
+            // console.log(err)            
         })
     }
     const downvote = () => {
-        axiosInstance.patch('posts/upvote_count/',{post:post_id,vote_signal:'down'}).then(res=>{
+        axiosInstance.patch('answers/upvote_count/',{answer:ans_id,vote_signal:'down'}).then(res=>{
             fetchQues(post_id)
         },err=>{
-            
+            // console.log(err)
         })
     }
     return (

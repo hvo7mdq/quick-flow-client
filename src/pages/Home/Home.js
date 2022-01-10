@@ -3,16 +3,22 @@ import SecondaryLayout from '../../layout/SecondaryLayout'
 import HelmetTitle from '../../components/Helmet/HelmetTitle'
 import axiosInstance from '../../axios'
 import Question from '../../components/question/Question'
+import Pagination from '../../components/Pagination/Pagination'
+import useQuery from '../../helper/Query'
 
 export default function Home() {
     let [ques,setQuestions] = useState(null)
+    let [paginaton,setPagination] = useState(null)
+    let query = useQuery()
+    let page = query.get("page")
     useEffect(()=>{
-        axiosInstance.get('/posts/').then(res=>{
+        axiosInstance.get(`/posts/?page=${page}`).then(res=>{
             // console.log(res.data.results)
             setQuestions(res.data.results)
+            setPagination(Math.ceil(res.data.count/10))
         })
         // setQuestions(questions)
-    },[])
+    },[page])
     return (
         <>
             <HelmetTitle title="Home" />
@@ -21,6 +27,7 @@ export default function Home() {
                     Top Questions
                 </div>
                 <Question ques={ques} />     
+                <Pagination page_no={paginaton}/>  
             </SecondaryLayout>
         </>
     )

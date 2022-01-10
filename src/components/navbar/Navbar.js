@@ -82,7 +82,7 @@ export default function Navbar() {
                     <img src={`${process.env.REACT_APP_API_URL_1}${avatar}`} className='border rounded-circle nav-avatar'/>
                     </a>
                     <div className="dropdown-menu dropdown-menu-end drp-nav text-center">
-                        <Link className="dropdown-item" to={`profile/${id}`} >Profile</Link>
+                        <Link className="dropdown-item" to={`/profile/${id}`} >Profile</Link>
                         <button className="dropdown-item" onClick={logout}>Log Out</button>
                     </div>
                 </div>
