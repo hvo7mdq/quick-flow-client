@@ -16,12 +16,15 @@ export default function AnswerQues({answers,post_id,fetchQues,user_id}) {
     let history = useHistory()
     let auth = checkAuth()
     let [err,setErr] = useState(null)
+    let [loading,setLoading] = useState(null)
     const postAnswer = async(values)=> {
         // console.log(values)
+        setLoading(true)
         if(auth[0]){
             await axiosInstance.post('answers/',{...values,post:post_id}).catch(err=>{
                 setErr(err.response.data.detail)
             })
+            setLoading(false)
             fetchQues(post_id)
         }else{
             history.push('/login')
@@ -47,7 +50,12 @@ export default function AnswerQues({answers,post_id,fetchQues,user_id}) {
             {({setFieldValue})=>(
                 <Form>
                     <InputTextEditor description="answer" onChange={setFieldValue}/>
-                    <button type="submit" className="btn btn-primary d-block">Post Answer</button>
+                    <div className="d-flex align-items-center">
+                        <button type="submit" className="btn btn-primary d-block">Post Answer</button>
+                        { loading && 
+                            <div className="ms-3 spinner-border spinner-border-sm text-primary" role="status"></div>
+                        }
+                    </div>
                     <p className='text-danger mt-2'>{err && err}</p>
                 </Form>
             )}

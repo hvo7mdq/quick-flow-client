@@ -11,13 +11,17 @@ import questionSchema from '../../schema/QuestionSchema'
 export default function NewQuestion() {
     const [success,setSuccess] = useState(null)
     const [error,setError] = useState(null)
+    const [loading,setLoading] = useState(false)
     const handleSubmit = async(values) => {
+        setLoading(true)
         axiosInstance.post('/posts/',values).then(res=>{
             setError(null)
             setSuccess("Question Asked")
+            setLoading(false)
         },err=>{
             setSuccess(null)
             setError("Failed to ask try again")
+            setLoading(false)
         })
         // console.log(values)
     }
@@ -34,7 +38,13 @@ export default function NewQuestion() {
                     <InputField name="title" type="text" id="title" label="Title" />
                     <InputTextEditor description="description" onChange={setFieldValue}/>
                     <InputTag tags={values.tags} id="tags" name="tags" type="text" setFieldValue={setFieldValue}/>
+                    <div className="d-flex align-items-center">
                     <button type="submit" className="btn btn-primary d-block">Post Question</button>
+                    {loading && 
+                        <div class="ms-3 spinner-border text-primary" role="status"></div>
+                    }
+                    </div>
+                    
                     <p className='text-danger'>{error && error}</p>
                     <p className='text-success'>{success && success}</p>
                 </Form>
