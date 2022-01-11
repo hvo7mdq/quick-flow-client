@@ -11,11 +11,11 @@ export default function Home() {
     let [paginaton,setPagination] = useState(null)
     let query = useQuery()
     let page = query.get("page") || 1
-    useEffect(()=>{
-        axiosInstance.get(`/posts/?page=${page}`).then(res=>{
+    useEffect(async()=>{
+        await axiosInstance.get(`/posts/?page=${page}`).then(res=>{
             // console.log(res.data.results)
             setQuestions(res.data.results)
-            setPagination(Math.ceil(res.data.count/2))
+            setPagination(Math.ceil(res.data.count/5))
         })
         // setQuestions(questions)
     },[page])
@@ -27,7 +27,7 @@ export default function Home() {
                     Top Questions
                 </div>
                 <Question ques={ques} />     
-                <Pagination totalPage={paginaton} pageLimit={5} />  
+                {ques && paginaton && <Pagination totalPage={paginaton} pageLimit={5} />  }
             </SecondaryLayout>
         </>
     )

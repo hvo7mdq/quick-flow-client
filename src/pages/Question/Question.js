@@ -15,7 +15,7 @@ export default function Questions() {
     useEffect(()=>{
         axiosInstance.get(`/posts/?page=${page}`).then(res=>{
             setQuestions(res.data.results)
-            setPagination(Math.ceil(res.data.count/2))
+            setPagination(Math.ceil(res.data.count/5))
         })
     },[page])
     return (
@@ -31,7 +31,7 @@ export default function Questions() {
                 </div>
                 </div>
                 <Question ques={ques} />  
-                <Pagination totalPage={paginaton} pageLimit={5} /> 
+                {ques && <Pagination totalPage={paginaton} pageLimit={5} />  }
             </SecondaryLayout>
         </>
     )
