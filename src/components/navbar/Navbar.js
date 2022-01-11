@@ -79,7 +79,7 @@ export default function Navbar() {
                 {localStorage.getItem('token')?            
                 <div className="btn-group">
                     <a type="button" className="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src={`${process.env.REACT_APP_API_URL_1}${avatar}/`} className='border rounded-circle nav-avatar'/>
+                    <img src={`${process.env.REACT_APP_API_URL_2}${avatar}/`} className='border rounded-circle nav-avatar'/>
                     </a>
                     <div className="dropdown-menu dropdown-menu-end drp-nav text-center">
                         <Link className="dropdown-item" to={`/profile/${id}`} >Profile</Link>
