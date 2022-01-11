@@ -31,7 +31,7 @@ export default function Questions() {
                 </div>
                 </div>
                 <Question ques={ques} />  
-                <Pagination page_no={paginaton}/>  
+                <Pagination totalCount={paginaton} pageLimit={5} /> 
             </SecondaryLayout>
         </>
     )

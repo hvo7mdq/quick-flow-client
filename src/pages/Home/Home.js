@@ -15,7 +15,7 @@ export default function Home() {
         axiosInstance.get(`/posts/?page=${page}`).then(res=>{
             // console.log(res.data.results)
             setQuestions(res.data.results)
-            setPagination(Math.ceil(res.data.count/10))
+            setPagination(Math.ceil(res.data.count/2))
         })
         // setQuestions(questions)
     },[page])
@@ -27,7 +27,7 @@ export default function Home() {
                     Top Questions
                 </div>
                 <Question ques={ques} />     
-                <Pagination page_no={paginaton}/>  
+                <Pagination totalPage={paginaton} pageLimit={5} />  
             </SecondaryLayout>
         </>
     )
