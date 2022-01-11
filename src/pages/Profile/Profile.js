@@ -30,7 +30,7 @@ export default function Profile() {
                     </div>
                     <div className="col-4">
                         <div className="col-12" style={{height:"300px",width:"300px"}}>
-                            <img src={`${process.env.REACT_APP_API_URL_1}${user.avatar}`} className='img-fluid border rounded-circle' />
+                            <img src={`${process.env.REACT_APP_API_URL_2}${user.avatar}`} className='img-fluid border rounded-circle' />
                         </div>
                         <div className="col-12 mt-4 fw-bold fs-4">
                             {user.user.first_name + ' ' +user.user.last_name}

@@ -54,7 +54,7 @@ export default function Navbar() {
         await axiosInstance.post('logout/',{refresh_token:localStorage.getItem('refresh')})
         localStorage.removeItem('token')
         localStorage.removeItem('refresh')
-        history.push('/')
+        history.push('/?page=1')
         }
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light py-2 position-fixed top-0 w-100">
@@ -63,7 +63,7 @@ export default function Navbar() {
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className='d-flex w-50 justify-content-around'>
-                    <Link to="/" className="navbar-brand" href="#">QuickFlow</Link>
+                    <Link to="/?page=1" className="navbar-brand" href="#">QuickFlow</Link>
                     <Formik
                     initialValues={searchInitialValues}
                     onSubmit={search}
@@ -79,10 +79,10 @@ export default function Navbar() {
                 {localStorage.getItem('token')?            
                 <div className="btn-group">
                     <a type="button" className="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src={`${process.env.REACT_APP_API_URL_1}${avatar}`} className='border rounded-circle nav-avatar'/>
+                    <img src={`${process.env.REACT_APP_API_URL_2}${avatar}/`} className='border rounded-circle nav-avatar'/>
                     </a>
                     <div className="dropdown-menu dropdown-menu-end drp-nav text-center">
-                        <Link className="dropdown-item" to={`profile/${id}`} >Profile</Link>
+                        <Link className="dropdown-item" to={`/profile/${id}`} >Profile</Link>
                         <button className="dropdown-item" onClick={logout}>Log Out</button>
                     </div>
                 </div>

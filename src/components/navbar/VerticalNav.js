@@ -7,19 +7,19 @@ export default function VerticalNav() {
         <div className="navbar-light ver-nav position-fixed border-end pt-3" id="navbarToggleExternalContent">
             <ul className="navbar-nav flex-column me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                    <NavLink to="/" exact activeClassName="active" className='nav-link d-flex align-items-center ps-4'>
+                    <NavLink to="/?page=1" exact activeClassName="active-nav" className='nav-link d-flex align-items-center ps-4'>
                         <Home />
                         <div className='ps-2'>Home</div>
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/questions" exact activeClassName="active" className="nav-link d-flex  align-items-center ps-4">
+                    <NavLink to="/questions?page=1" exact activeClassName="active-nav" className="nav-link d-flex  align-items-center ps-4">
                         <Question />
                         <div className='ps-2'>Questions</div>
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/tags" activeClassName="active" className="nav-link d-flex  align-items-center ps-4">
+                    <NavLink to="/tags" activeClassName="active-nav" className="nav-link d-flex  align-items-center ps-4">
                         <Tag />
                         <div className='ps-2'>Tags</div>
                     </NavLink>

@@ -15,9 +15,10 @@ export default function Login() {
             setLoginError(null)
             localStorage.setItem('token',res.data.access)
             localStorage.setItem('refresh',res.data.refresh)
-            history.push('/')
+            history.push('/?page=1')
         }).catch(err=>{
             setLoginError("Email or Password Incorrect")
+            console.log(err)
         })
     }
 
