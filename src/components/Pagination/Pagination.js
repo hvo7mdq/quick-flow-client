@@ -29,16 +29,16 @@ export default function Pagination({totalPage,pageLimit}) {
     return (
         <nav>
             <ul className="pagination justify-content-center">
-            <li class={prev}>
-                <button onClick={prevPage} className='page-link' tabindex="-1">Prev</button>                
+            <li className={prev}>
+                <button onClick={prevPage} className='page-link' tabIndex="-1">Prev</button>                
             </li>
             {getPaginationGroup().map(page=>(
                 <li className={`page-item ${currPage==page && 'active'}`} key={`index-${page}`} >
                     <button className='page-link' onClick={()=>gotoPage(page)}>{page}</button>
                 </li>
             ))}
-            <li class={next}>
-                <button onClick={nextPage} className='page-link' tabindex="-1">Next</button>                
+            <li className={next}>
+                <button onClick={nextPage} className='page-link' tabIndex="-1">Next</button>                
             </li>
             </ul>
         </nav>
