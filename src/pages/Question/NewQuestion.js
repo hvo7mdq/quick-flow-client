@@ -1,6 +1,7 @@
 import { Form, Formik } from 'formik'
 import React, { useState } from 'react'
 import axiosInstance from '../../axios'
+import HelmetTitle from '../../components/Helmet/HelmetTitle'
 import InputField from '../../components/Input/InputField'
 import InputTag from '../../components/Input/InputTag'
 import InputTextEditor from '../../components/Input/InputTextEditor'
@@ -27,6 +28,7 @@ export default function NewQuestion() {
     }
     return (
         <SecondaryLayout>
+        <HelmetTitle title="New Question" />
             <Formik
             onSubmit={handleSubmit}
             initialValues={newQuestionInitialValues} 

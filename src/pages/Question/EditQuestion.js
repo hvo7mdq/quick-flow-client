@@ -8,6 +8,7 @@ import InputTextEditor from '../../components/Input/InputTextEditor'
 import SecondaryLayout from '../../layout/SecondaryLayout'
 import questionSchema from '../../schema/QuestionSchema'
 import DOMPurify from 'dompurify'
+import HelmetTitle from '../../components/Helmet/HelmetTitle'
 
 export default function EditQuestion() {
     const {id} = useParams()
@@ -41,6 +42,7 @@ export default function EditQuestion() {
     },[])
     return (
         <SecondaryLayout>
+        <HelmetTitle title="Edit Question" />
         {ques ?
             <Formik
             onSubmit={handleSubmit}

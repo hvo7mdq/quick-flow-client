@@ -27,7 +27,7 @@ export default function Home() {
                     Top Questions
                 </div>
                 <Question ques={ques} />     
-                {ques && paginaton && <Pagination totalPage={paginaton} pageLimit={5} />  }
+                {ques && paginaton ? <Pagination totalPage={paginaton} pageLimit={5} />  :<></>}
             </SecondaryLayout>
         </>
     )

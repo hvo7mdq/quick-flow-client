@@ -8,7 +8,7 @@ export default function Pagination({totalPage,totalCount,pageLimit}) {
     let query = useQuery()
     const history = useHistory()
     const {pathname} = useLocation()
-    let [currPage,setCurrPage] = useState(query.get("page"))
+    let [currPage,setCurrPage] = useState(query.get("page") || 1)
     let next = classNames('page-item', currPage==totalPage && 'disabled')
     let prev = classNames('page-item' , currPage==1 && 'disabled')
     const nextPage = () => {

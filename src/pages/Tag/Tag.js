@@ -6,6 +6,7 @@ import { Formik,Form,Field } from 'formik'
 import { searchInitialValues } from '../../constants/Form/SearchInitialValues'
 import searchSchema from '../../schema/SearchSchema'
 import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import HelmetTitle from '../../components/Helmet/HelmetTitle'
 
 export default function Tag() {
     const history = useHistory()
@@ -23,6 +24,7 @@ export default function Tag() {
     }
     return (
         <>
+            <HelmetTitle title="Tags" />
             <SecondaryLayout>            
             <p className='fw-bold fs-5'>Tags</p>
             <Formik

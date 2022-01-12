@@ -17,7 +17,7 @@ export default function Recover() {
             // console.log(res.data)
         },err=>{
             setSuccess(null)
-            // setErr(err.response.data.detail)
+            setErr(err.response.data.detail)
         })
     }
     return (

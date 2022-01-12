@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Description from '../question/Component/Description'
+import Desc from '../question/Component/Desc'
 import Correct from './Correct'
 import AnsweredBy from './AnsweredBy'
 import AnsComment from './AnsComment'
@@ -30,10 +30,9 @@ export default function AnswerQues({answers,post_id,fetchQues,user_id}) {
             history.push('/login')
         }
     }
-    const correctAnswer = async (id) => {
+    const correctAnswer = (id) => {
         if(auth[1].user_id === user_id){
-            let up = await axiosInstance.patch('answers/right_answer/',{answer:id})
-            up.then(res=>{
+            axiosInstance.patch('answers/right_answer/',{answer:id}).then(res=>{
                 // console.log(res)
                 fetchQues(post_id)
             })
@@ -63,7 +62,7 @@ export default function AnswerQues({answers,post_id,fetchQues,user_id}) {
             {answers.map(ans=>(
                 <div className='row border-bottom pb-2 mt-3' key={ans.id}>
                     <AnsUpvote post_id={post_id} fetchQues={fetchQues} ans_id={ans.id} upvotes={ans.upvote_count} />
-                    <Description Description={ans.answer} />
+                    <Desc Description={ans.answer} />
                     <div className="row justify-content-between">
                         <Correct correct={ans.correct} />
                         <AnsweredBy user_id={ans.user.id} time={ans.created_at} user={ans.user.first_name +' '+ ans.user.last_name}/>

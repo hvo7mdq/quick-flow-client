@@ -3,6 +3,7 @@ import SecondaryLayout from '../../layout/SecondaryLayout'
 import axiosInstance from '../../axios'
 import UserQuestion from '../../components/Profile/UserQuestion'
 import { useParams } from 'react-router-dom'
+import HelmetTitle from '../../components/Helmet/HelmetTitle'
 
 export default function Profile() {
     let [ques,setQuestions] = useState(null)
@@ -18,6 +19,7 @@ export default function Profile() {
     },[])
     return (
         <SecondaryLayout>
+        <HelmetTitle title={user ?user.user.first_name:'Profile'} />
         {user ?
                 <div className="row">
                     <div className="col-8">
